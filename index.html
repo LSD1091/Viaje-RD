@@ -973,6 +973,104 @@
   .pill-clickable { cursor: pointer; user-select: none; }
   .pill-clickable:hover { opacity: 0.8; }
 
+  /* ── CHECKLIST V2 ─────────────────────────────────────── */
+  .cl-category {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .cl-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.04);
+    cursor: pointer;
+    user-select: none;
+  }
+  .cl-cat-header:hover { background: rgba(255,255,255,0.07); }
+  .cl-cat-emoji { font-size:1rem; flex-shrink:0; cursor:pointer; }
+  .cl-cat-name {
+    flex:1;
+    font-size:0.88rem;
+    font-weight:600;
+    color:var(--white);
+    background:none;
+    border:none;
+    outline:none;
+    font-family:'DM Sans',sans-serif;
+    cursor:text;
+  }
+  .cl-cat-count {
+    font-size:0.68rem;
+    color:var(--muted);
+    background:rgba(255,255,255,0.07);
+    border-radius:99px;
+    padding:0.15rem 0.5rem;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .cl-cat-chevron {
+    font-size:0.75rem;
+    color:var(--muted);
+    transition:transform 0.2s;
+    flex-shrink:0;
+  }
+  .cl-cat-collapsed .cl-cat-chevron { transform:rotate(-90deg); }
+  .cl-cat-del {
+    background:none;
+    border:none;
+    color:rgba(232,97,77,0.4);
+    cursor:pointer;
+    font-size:1rem;
+    padding:0 0.2rem;
+    flex-shrink:0;
+    transition:color 0.15s;
+  }
+  .cl-cat-del:hover { color:var(--coral); }
+  .cl-cat-body { padding:0.3rem 0 0.5rem; }
+  .cl-cat-collapsed .cl-cat-body { display:none; }
+
+  .check-item {
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    padding:0.55rem 1rem;
+    border-radius:8px;
+    cursor:pointer;
+    transition:background 0.15s;
+    position:relative;
+  }
+  .check-item:hover { background:rgba(255,255,255,0.04); }
+  .check-item.done .check-box { background:var(--turquoise); border-color:var(--turquoise); color:var(--deep); }
+  .check-item.done .check-text { text-decoration:line-through; color:var(--muted); }
+
+  .check-item-actions {
+    display:none;
+    gap:0.3rem;
+    flex-shrink:0;
+    margin-left:auto;
+  }
+  .check-item:hover .check-item-actions { display:flex; }
+  .check-action-btn {
+    background:none;
+    border:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:0.8rem;
+    padding:0.1rem 0.3rem;
+    border-radius:4px;
+    transition:background 0.15s,color 0.15s;
+    line-height:1;
+  }
+  .check-action-btn:hover { background:rgba(255,255,255,0.1); color:var(--white); }
+  .check-action-btn.del:hover { color:var(--coral); }
+
+  /* hide old check-del since we use new actions */
+  .check-del { display:none !important; }
+
   /* CHECKLIST ADD/DELETE */
   .check-item { position: relative; }
   .check-del {
@@ -994,6 +1092,9 @@
 
   .check-add-row {
     padding: 0.2rem 0.8rem 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
   .check-new-input {
     background: none;
@@ -1009,6 +1110,22 @@
   }
   .check-new-input::placeholder { color: rgba(107,138,149,0.55); }
   .check-new-input:focus { border-bottom-color: var(--turquoise); }
+
+  .check-add-btn, .tag-add-btn {
+    flex-shrink: 0;
+    background: rgba(44,196,196,0.15);
+    border: 1px solid rgba(44,196,196,0.35);
+    color: var(--turquoise);
+    border-radius: 6px;
+    width: 28px; height: 28px;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0;
+  }
+  .check-add-btn:hover, .tag-add-btn:hover { background: rgba(44,196,196,0.3); }
 
   /* PDF UPLOAD */
   .pdf-upload-btn {
@@ -1089,6 +1206,11 @@
   .tag-del:hover { opacity: 1; }
 
   .tag-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+  }
     margin-top: 0.5rem;
   }
 
@@ -1159,6 +1281,57 @@
   @keyframes spin { to { transform: rotate(360deg); } }
   .spinning { display: inline-block; animation: spin 1s linear infinite; }
 
+  /* ── UTILS ────────────────────────────────────────────────── */
+  .util-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .util-card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .util-label {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
+  }
+  .util-input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    padding: 0.55rem 0.8rem;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .util-input:focus { border-color: var(--turquoise); }
+  .util-input[style*="gold"] { color: var(--gold) !important; }
+
+  .quick-btn {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 0.3rem 0.7rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .quick-btn:hover { background: rgba(44,196,196,0.2); color: var(--turquoise); }
+
   /* FOOTER */
   .footer {
     text-align: center;
@@ -1228,6 +1401,7 @@
   <button class="tab-btn" onclick="showTab('checklist',this)"><span class="tab-icon">✅</span><span class="tab-label">Check</span></button>
   <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">ℹ️</span><span class="tab-label">Info</span></button>
   <button class="tab-btn" onclick="showTab('info',this)"><span class="tab-icon">🌴</span><span class="tab-label">Info RD</span></button>
+  <button class="tab-btn" onclick="showTab('utils',this)"><span class="tab-icon">🛠</span><span class="tab-label">Utils</span></button>
 </div>
 
 <div class="content">
@@ -1372,7 +1546,8 @@
             <span class="note-tag info">Reserva: Booking de Jana</span>
           </div>
           <div class="tag-input-row">
-            <input class="tag-input" type="text" placeholder="+ Añadir nota o tarea…" onkeydown="addTag(event,'tags-1')">
+            <input class="tag-input" type="text" id="tags-1-input" placeholder="+ Añadir nota…" onkeydown="addTag(event,'tags-1')">
+            <button class="tag-add-btn" onclick="addTagBtn('tags-1')">＋</button>
           </div>
         </div>
       </div>
@@ -1396,11 +1571,12 @@
             <div class="date-item"><div class="date-label">Salida</div><div>Lun 27 Jul</div></div>
           </div>
           <div class="stop-notes" id="tags-2">
-            <span class="note-tag alert removable">⚠ Comprar entradas barco e isla <span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <span class="note-tag alert removable">⚠ Comprar entradas barco e isla <span class="tag-del" onclick="this.closest('span.removable').remove();saveAll();">×</span></span>
             <span class="note-tag info">Reserva: Booking de Jana</span>
           </div>
           <div class="tag-input-row">
-            <input class="tag-input" type="text" placeholder="+ Añadir nota o tarea…" onkeydown="addTag(event,'tags-2')">
+            <input class="tag-input" type="text" id="tags-2-input" placeholder="+ Añadir nota…" onkeydown="addTag(event,'tags-2')">
+            <button class="tag-add-btn" onclick="addTagBtn('tags-2')">＋</button>
           </div>
         </div>
       </div>
@@ -1425,10 +1601,11 @@
           </div>
           <div class="stop-notes" id="tags-3">
             <span class="note-tag info">Reserva: Airbnb de Royo</span>
-            <span class="note-tag alert removable">Pagado pero sin liquidar entre todos <span class="tag-del" onclick="removeTag(this)">×</span></span>
+            <span class="note-tag alert removable">Pagado pero sin liquidar entre todos <span class="tag-del" onclick="this.closest('span.removable').remove();saveAll();">×</span></span>
           </div>
           <div class="tag-input-row">
-            <input class="tag-input" type="text" placeholder="+ Añadir nota o tarea…" onkeydown="addTag(event,'tags-3')">
+            <input class="tag-input" type="text" id="tags-3-input" placeholder="+ Añadir nota…" onkeydown="addTag(event,'tags-3')">
+            <button class="tag-add-btn" onclick="addTagBtn('tags-3')">＋</button>
           </div>
         </div>
       </div>
@@ -1456,7 +1633,8 @@
             <span class="note-tag info">Reserva: Booking de Jana</span>
           </div>
           <div class="tag-input-row">
-            <input class="tag-input" type="text" placeholder="+ Añadir nota o tarea…" onkeydown="addTag(event,'tags-4')">
+            <input class="tag-input" type="text" id="tags-4-input" placeholder="+ Añadir nota…" onkeydown="addTag(event,'tags-4')">
+            <button class="tag-add-btn" onclick="addTagBtn('tags-4')">＋</button>
           </div>
         </div>
       </div>
@@ -1484,7 +1662,8 @@
             <span class="note-tag info">Reserva: Booking de Jana</span>
           </div>
           <div class="tag-input-row">
-            <input class="tag-input" type="text" placeholder="+ Añadir nota o tarea…" onkeydown="addTag(event,'tags-5')">
+            <input class="tag-input" type="text" id="tags-5-input" placeholder="+ Añadir nota…" onkeydown="addTag(event,'tags-5')">
+            <button class="tag-add-btn" onclick="addTagBtn('tags-5')">＋</button>
           </div>
         </div>
       </div>
@@ -1512,7 +1691,8 @@
             <span class="note-tag info">Reserva: Booking de Jana</span>
           </div>
           <div class="tag-input-row">
-            <input class="tag-input" type="text" placeholder="+ Añadir nota o tarea…" onkeydown="addTag(event,'tags-6')">
+            <input class="tag-input" type="text" id="tags-6-input" placeholder="+ Añadir nota…" onkeydown="addTag(event,'tags-6')">
+            <button class="tag-add-btn" onclick="addTagBtn('tags-6')">＋</button>
           </div>
         </div>
       </div>
@@ -1677,57 +1857,79 @@
       <div class="msg"><strong>Prioritario: Comprar entradas barco + Isla Saona</strong> Antes del viaje.</div>
     </div>
 
-    <div class="checklist-section">
-      <div class="checklist-title">📋 Antes del viaje</div>
-      <div id="cl-previa">
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pagar El Toucan (Jana) — 100€</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pagar El Paraíso de Saona (Jana) — ~258€</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">⚠ Comprar entradas barco + Isla Saona</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Liquidar aloj. Santo Domingo (Royo pagó 198€)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pagar Villa Lugo Lahoz (Jana) — 732€</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pagar La Dolce Vita 12 (Jana) — 651€</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pagar Caribbean Deluxe Princess (Jana) — 1.389€</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Comprobar validez pasaporte (mín. 6 meses)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Contratar seguro de viaje</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Vacuna fiebre amarilla / consultar médico</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Activar roaming o SIM local RD</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Descargar mapas offline (Google Maps)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Cambiar euros a pesos dominicanos o dólares</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Avisar al banco del viaje internacional</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
+    <!-- Progress bar -->
+    <div style="margin-bottom:1.2rem;">
+      <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">
+        <span>Progreso general</span>
+        <span id="cl-progress-txt">0 / 0 completados</span>
       </div>
-      <div class="check-add-row"><input class="check-new-input" placeholder="＋ Nueva tarea…" onkeydown="addCheck(event,'cl-previa')"></div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:99px;height:6px;overflow:hidden;">
+        <div id="cl-progress-bar" style="height:100%;background:linear-gradient(90deg,var(--turquoise),var(--gold));border-radius:99px;width:0%;transition:width 0.4s;"></div>
+      </div>
     </div>
 
-    <div class="checklist-section">
-      <div class="checklist-title">🧳 Equipaje esencial</div>
-      <div id="cl-equipaje">
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Protector solar (FPS 50+)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Repelente de mosquitos (DEET recomendado)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Adaptador de corriente (tipo A/B, 110V)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Botiquín básico (antidiarreicos, antihistamínicos)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Ropa ligera (verano caribeño)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Calzado de agua / chanclas</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Cámara / GoPro</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
+    <!-- Add category -->
+    <div style="margin-bottom:1rem;">
+      <div class="check-add-row" style="padding:0;">
+        <input class="check-new-input" id="new-cat-input" placeholder="＋ Nueva categoría…" onkeydown="addCategory(event)" style="font-size:0.85rem;">
+        <button class="check-add-btn" onclick="addCategoryBtn()" style="width:auto;padding:0 0.8rem;font-size:0.78rem;white-space:nowrap;">＋ Categoría</button>
       </div>
-      <div class="check-add-row"><input class="check-new-input" placeholder="＋ Nueva tarea…" onkeydown="addCheck(event,'cl-equipaje')"></div>
     </div>
 
-    <div class="checklist-section">
-      <div class="checklist-title">🏖 Actividades a reservar</div>
-      <div id="cl-actividades">
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Excursión Isla Saona (barco)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Visita Ciudad Colonial de Santo Domingo</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Cascadas El Limón (Samaná)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Avistamiento de ballenas (si es temporada)</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
-        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Buceo o snorkel</div><button class="check-del" onclick="deleteCheck(event,this)">×</button></div>
+    <!-- Categories container — rendered dynamically -->
+    <div id="cl-categories"></div>
+
+    <!-- Move-item modal -->
+    <div id="move-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center;">
+      <div style="background:#0D3D52;border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.5rem;width:min(340px,90vw);max-height:80vh;overflow-y:auto;">
+        <div style="font-size:0.9rem;font-weight:600;margin-bottom:1rem;color:var(--white);">Mover tarea a categoría</div>
+        <div id="move-modal-cats" style="display:flex;flex-direction:column;gap:0.5rem;"></div>
+        <button onclick="closeMoveModal()" style="margin-top:1rem;width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:var(--white);border-radius:8px;padding:0.5rem;font-family:'DM Sans',sans-serif;cursor:pointer;">Cancelar</button>
       </div>
-      <div class="check-add-row"><input class="check-new-input" placeholder="＋ Nueva actividad…" onkeydown="addCheck(event,'cl-actividades')"></div>
     </div>
   </div>
-
   <!-- INFORMACIÓN (ex-NOTAS) -->
   <div id="panel-notas" class="panel">
     <div class="section-title">ℹ️ Información</div>
+
+    <!-- MINI UTILS: Divisa + Reloj -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+
+      <!-- RELOJ RD -->
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem;text-align:center;">
+        <div style="font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">🇩🇴 Rep. Dominicana</div>
+        <div id="info-time-rd" style="font-size:1.8rem;font-weight:700;color:var(--turquoise);font-variant-numeric:tabular-nums;line-height:1;"></div>
+        <div id="info-date-rd" style="font-size:0.7rem;color:var(--muted);margin-top:0.3rem;"></div>
+        <div style="margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.06);">
+          <div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.2rem;">🇪🇸 España</div>
+          <div id="info-time-es" style="font-size:1.1rem;font-weight:600;color:var(--white);font-variant-numeric:tabular-nums;"></div>
+        </div>
+        <div id="info-time-diff" style="font-size:0.65rem;color:rgba(107,138,149,0.6);margin-top:0.4rem;"></div>
+      </div>
+
+      <!-- CONVERSOR RÁPIDO -->
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem;">
+        <div style="font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.7rem;">💱 Conversor rápido</div>
+        <div style="margin-bottom:0.5rem;">
+          <label style="font-size:0.65rem;color:var(--muted);display:block;margin-bottom:0.2rem;">Euros (€)</label>
+          <input class="util-input" id="info-conv-eur" type="number" placeholder="0" min="0"
+            oninput="infoConvert('eur')" style="font-size:0.9rem;padding:0.4rem 0.6rem;">
+        </div>
+        <div style="margin-bottom:0.5rem;">
+          <label style="font-size:0.65rem;color:var(--muted);display:block;margin-bottom:0.2rem;">Pesos Dom. (DOP)</label>
+          <input class="util-input" id="info-conv-dop" type="number" placeholder="0" min="0"
+            oninput="infoConvert('dop')" style="font-size:0.9rem;padding:0.4rem 0.6rem;">
+        </div>
+        <div style="font-size:0.65rem;color:var(--muted);text-align:right;">
+          Tasa: <span id="info-rate-txt">~64 DOP/€</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem;">
+          <button class="quick-btn" style="font-size:0.68rem;padding:0.2rem 0.5rem;" onclick="infoQuick(10)">10€</button>
+          <button class="quick-btn" style="font-size:0.68rem;padding:0.2rem 0.5rem;" onclick="infoQuick(50)">50€</button>
+          <button class="quick-btn" style="font-size:0.68rem;padding:0.2rem 0.5rem;" onclick="infoQuick(100)">100€</button>
+        </div>
+      </div>
+    </div>
 
     <!-- DOCUMENTOS PDF -->
     <div style="margin-bottom:2rem;">
@@ -1891,6 +2093,127 @@
     </div>
   </div>
 
+  <!-- UTILS -->
+  <div id="panel-utils" class="panel">
+    <div class="section-title">🛠 Utilidades del Viaje</div>
+
+    <!-- DIVISAS -->
+    <div class="util-card">
+      <div class="util-card-title">💱 Conversor de Divisas</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1rem;">Tipo de cambio orientativo · actualizado al cargar</div>
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0.7rem;align-items:end;margin-bottom:0.8rem;">
+        <div>
+          <label class="util-label">Euros (€)</label>
+          <input class="util-input" id="conv-eur" type="number" placeholder="0" min="0" oninput="convertCurrency('eur')">
+        </div>
+        <div style="padding-bottom:0.6rem;font-size:1.4rem;color:var(--muted);text-align:center;">⇄</div>
+        <div>
+          <label class="util-label">Pesos Dom. (DOP)</label>
+          <input class="util-input" id="conv-dop" type="number" placeholder="0" min="0" oninput="convertCurrency('dop')">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-bottom:0.8rem;">
+        <div>
+          <label class="util-label">Dólares (USD)</label>
+          <input class="util-input" id="conv-usd" type="number" placeholder="0" min="0" oninput="convertCurrency('usd')">
+        </div>
+        <div>
+          <label class="util-label">Tasa EUR→DOP</label>
+          <input class="util-input" id="conv-rate" type="number" value="64" min="1" oninput="convertCurrency('eur')" style="color:var(--gold);">
+        </div>
+      </div>
+      <div id="conv-result" style="background:rgba(44,196,196,0.07);border:1px solid rgba(44,196,196,0.15);border-radius:10px;padding:0.9rem;font-size:0.82rem;color:rgba(253,250,245,0.8);line-height:1.9;display:none;"></div>
+      <div style="margin-top:0.8rem;">
+        <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.4rem;">Conversión rápida:</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+          <button class="quick-btn" onclick="quickConv(10)">10€</button>
+          <button class="quick-btn" onclick="quickConv(20)">20€</button>
+          <button class="quick-btn" onclick="quickConv(50)">50€</button>
+          <button class="quick-btn" onclick="quickConv(100)">100€</button>
+          <button class="quick-btn" onclick="quickConv(200)">200€</button>
+          <button class="quick-btn" onclick="quickConv(500)">500€</button>
+        </div>
+      </div>
+      <button class="save-btn" style="margin-top:0.8rem;font-size:0.75rem;" onclick="fetchExchangeRate()">🔄 Actualizar tipo de cambio</button>
+      <div id="rate-status" style="font-size:0.7rem;color:var(--muted);margin-top:0.4rem;"></div>
+    </div>
+
+    <!-- DIVISOR DE GASTOS -->
+    <div class="util-card">
+      <div class="util-card-title">🧮 Dividir Gastos del Grupo</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-bottom:0.8rem;">
+        <div>
+          <label class="util-label">Total a repartir (€)</label>
+          <input class="util-input" id="split-total" type="number" placeholder="0" min="0" oninput="calcSplit()">
+        </div>
+        <div>
+          <label class="util-label">Número de personas</label>
+          <input class="util-input" id="split-people" type="number" value="5" min="1" max="20" oninput="calcSplit()">
+        </div>
+      </div>
+      <div id="split-result" style="display:none;background:rgba(212,168,67,0.07);border:1px solid rgba(212,168,67,0.2);border-radius:10px;padding:1rem;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;text-align:center;">
+          <div><div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.2rem;">Por persona</div><div id="split-pp" style="font-size:1.4rem;font-weight:700;color:var(--gold);"></div></div>
+          <div><div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.2rem;">En DOP</div><div id="split-dop" style="font-size:1.1rem;font-weight:600;color:var(--turquoise);"></div></div>
+          <div><div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.2rem;">En USD</div><div id="split-usd" style="font-size:1.1rem;font-weight:600;color:rgba(253,250,245,0.7);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORA LOCAL RD -->
+    <div class="util-card">
+      <div class="util-card-title">🕐 Hora en República Dominicana</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+        <div style="text-align:center;">
+          <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">🇪🇸 España (Madrid)</div>
+          <div id="time-es" style="font-size:2rem;font-weight:700;color:var(--white);font-variant-numeric:tabular-nums;"></div>
+          <div id="date-es" style="font-size:0.72rem;color:var(--muted);margin-top:0.2rem;"></div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">🇩🇴 Rep. Dominicana</div>
+          <div id="time-rd" style="font-size:2rem;font-weight:700;color:var(--turquoise);font-variant-numeric:tabular-nums;"></div>
+          <div id="date-rd" style="font-size:0.72rem;color:var(--muted);margin-top:0.2rem;"></div>
+        </div>
+      </div>
+      <div style="margin-top:0.8rem;text-align:center;font-size:0.78rem;color:rgba(253,250,245,0.5);">
+        RD está en UTC-4 (AST) · <span id="time-diff"></span>
+      </div>
+    </div>
+
+    <!-- PROPINAS -->
+    <div class="util-card">
+      <div class="util-card-title">🤝 Calculadora de Propina</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-bottom:0.8rem;">
+        <div>
+          <label class="util-label">Total de la cuenta (€)</label>
+          <input class="util-input" id="tip-total" type="number" placeholder="0" min="0" oninput="calcTip()">
+        </div>
+        <div>
+          <label class="util-label">% de propina</label>
+          <input class="util-input" id="tip-pct" type="number" value="10" min="0" max="50" oninput="calcTip()">
+        </div>
+      </div>
+      <div style="display:flex;gap:0.4rem;margin-bottom:0.8rem;flex-wrap:wrap;">
+        <button class="quick-btn" onclick="setTipPct(5)">5%</button>
+        <button class="quick-btn" onclick="setTipPct(10)">10%</button>
+        <button class="quick-btn" onclick="setTipPct(15)">15%</button>
+        <button class="quick-btn" onclick="setTipPct(18)">18%</button>
+        <button class="quick-btn" onclick="setTipPct(20)">20%</button>
+      </div>
+      <div id="tip-result" style="display:none;background:rgba(232,97,77,0.07);border:1px solid rgba(232,97,77,0.2);border-radius:10px;padding:1rem;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;text-align:center;">
+          <div><div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.2rem;">Propina</div><div id="tip-amount" style="font-size:1.3rem;font-weight:700;color:var(--coral);"></div></div>
+          <div><div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.2rem;">Total con propina</div><div id="tip-with" style="font-size:1.3rem;font-weight:700;color:var(--white);"></div></div>
+          <div><div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.2rem;">Por persona (÷<span id="tip-n">5</span>)</div><div id="tip-pp" style="font-size:1.1rem;font-weight:600;color:var(--gold);"></div></div>
+        </div>
+        <div style="margin-top:0.6rem;text-align:center;font-size:0.7rem;color:var(--muted);">
+          ℹ️ En RD el 10% de propina suele estar incluido en la cuenta (ITBIS)
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <div class="footer">
@@ -1941,40 +2264,7 @@
       'tags-3':['Pagado pero sin liquidar entre todos'],
       'tags-4':[],'tags-5':[],'tags-6':[],
     },
-    checklist: {
-      'cl-previa': [
-        {text:'Pagar El Toucan (Jana) — 100€',done:false},
-        {text:'Pagar El Paraíso de Saona (Jana) — ~258€',done:false},
-        {text:'⚠ Comprar entradas barco + Isla Saona',done:false},
-        {text:'Liquidar aloj. Santo Domingo (Royo pagó 198€)',done:false},
-        {text:'Pagar Villa Lugo Lahoz (Jana) — 732€',done:false},
-        {text:'Pagar La Dolce Vita 12 (Jana) — 651€',done:false},
-        {text:'Pagar Caribbean Deluxe Princess (Jana) — 1.389€',done:false},
-        {text:'Comprobar validez pasaporte (mín. 6 meses)',done:false},
-        {text:'Contratar seguro de viaje',done:false},
-        {text:'Vacuna fiebre amarilla / consultar médico',done:false},
-        {text:'Activar roaming o SIM local RD',done:false},
-        {text:'Descargar mapas offline (Google Maps)',done:false},
-        {text:'Cambiar euros a pesos dominicanos o dólares',done:false},
-        {text:'Avisar al banco del viaje internacional',done:false},
-      ],
-      'cl-equipaje': [
-        {text:'Protector solar (FPS 50+)',done:false},
-        {text:'Repelente de mosquitos (DEET recomendado)',done:false},
-        {text:'Adaptador de corriente (tipo A/B, 110V)',done:false},
-        {text:'Botiquín básico (antidiarreicos, antihistamínicos)',done:false},
-        {text:'Ropa ligera (verano caribeño)',done:false},
-        {text:'Calzado de agua / chanclas',done:false},
-        {text:'Cámara / GoPro',done:false},
-      ],
-      'cl-actividades': [
-        {text:'Excursión Isla Saona (barco)',done:false},
-        {text:'Visita Ciudad Colonial de Santo Domingo',done:false},
-        {text:'Cascadas El Limón (Samaná)',done:false},
-        {text:'Avistamiento de ballenas (si es temporada)',done:false},
-        {text:'Buceo o snorkel',done:false},
-      ],
-    },
+    checklist: [], // populated from DEFAULT_CATS on first load
     pdfs: [],
   };
 
@@ -2094,20 +2384,13 @@
       (tags['tags-' + i] || []).forEach(t => appendTag(c, t));
     }
 
-    // Checklist
-    const cl = state.checklist || {};
-    ['cl-previa','cl-equipaje','cl-actividades'].forEach(sid => {
-      const el = document.getElementById(sid);
-      if (!el || !cl[sid]) return;
-      el.innerHTML = '';
-      cl[sid].forEach(({text, done}) => {
-        const div = document.createElement('div');
-        div.className = 'check-item' + (done ? ' done' : '');
-        div.setAttribute('onclick','toggleCheck(this)');
-        div.innerHTML = `<div class="check-box">✓</div><div class="check-text">${text}</div><button class="check-del" onclick="deleteCheck(event,this)">×</button>`;
-        el.appendChild(div);
-      });
-    });
+    // Checklist — new category format
+    if (Array.isArray(state.checklist) && state.checklist.length > 0) {
+      clCats = state.checklist;
+    } else {
+      clCats = JSON.parse(JSON.stringify(DEFAULT_CATS));
+    }
+    renderChecklist();
 
     // PDFs: lightweight metadata from main state (url points to Cloudinary)
     pdfDocs = state.pdfs || [];
@@ -2136,15 +2419,7 @@
       });
     }
 
-    state.checklist = {};
-    ['cl-previa','cl-equipaje','cl-actividades'].forEach(sid => {
-      const el = document.getElementById(sid);
-      if (!el) return;
-      state.checklist[sid] = Array.from(el.querySelectorAll('.check-item')).map(item => ({
-        text: item.querySelector('.check-text').textContent,
-        done: item.classList.contains('done'),
-      }));
-    });
+    state.checklist = clCats; // new format: array of category objects
     state.pdfs = pdfDocs; // only lightweight metadata, no base64
   }
 
@@ -2194,8 +2469,14 @@
   // ═══════════════════════════════════════════════════════════
   function addTag(event, containerId) {
     if (event.key !== 'Enter') return;
-    const input = event.target;
-    const text  = input.value.trim();
+    _doAddTag(containerId, event.target);
+  }
+  function addTagBtn(containerId) {
+    const input = document.getElementById(containerId + '-input');
+    if (input) _doAddTag(containerId, input);
+  }
+  function _doAddTag(containerId, input) {
+    const text = input.value.trim();
     if (!text) return;
     appendTag(document.getElementById(containerId), text);
     input.value = '';
@@ -2274,29 +2555,220 @@
   }
 
   // ═══════════════════════════════════════════════════════════
-  //  CHECKLIST
+  //  CHECKLIST V2 — categories + drag-to-move
   // ═══════════════════════════════════════════════════════════
-  function toggleCheck(el) { el.classList.toggle('done'); saveAll(); }
-  function deleteCheck(event, btn) {
-    event.stopPropagation();
-    btn.closest('.check-item').remove();
-    saveAll();
-  }
-  function addCheck(event, containerId) {
-    if (event.key !== 'Enter') return;
-    const text = event.target.value.trim();
-    if (!text) return;
-    const div = document.createElement('div');
-    div.className = 'check-item';
-    div.setAttribute('onclick','toggleCheck(this)');
-    div.innerHTML = `<div class="check-box">✓</div><div class="check-text">${text}</div><button class="check-del" onclick="deleteCheck(event,this)">×</button>`;
-    document.getElementById(containerId).appendChild(div);
-    event.target.value = '';
-    saveAll();
+
+  // checklist state: array of {id, name, emoji, collapsed, items:[{id,text,done}]}
+  let clCats = [];
+  let movingItem = null; // {catId, itemId}
+
+  const DEFAULT_CATS = [
+    { id:'cat-previa', name:'Antes del viaje', emoji:'📋', collapsed:false, items:[
+      {id:'i1',text:'Pagar El Toucan (Jana) — 100€',done:false},
+      {id:'i2',text:'Pagar El Paraíso de Saona (Jana) — ~258€',done:false},
+      {id:'i3',text:'⚠ Comprar entradas barco + Isla Saona',done:false},
+      {id:'i4',text:'Liquidar aloj. Santo Domingo (Royo pagó 198€)',done:false},
+      {id:'i5',text:'Pagar Villa Lugo Lahoz (Jana) — 732€',done:false},
+      {id:'i6',text:'Pagar La Dolce Vita 12 (Jana) — 651€',done:false},
+      {id:'i7',text:'Pagar Caribbean Deluxe Princess (Jana) — 1.389€',done:false},
+      {id:'i8',text:'Comprobar validez pasaporte (mín. 6 meses)',done:false},
+      {id:'i9',text:'Contratar seguro de viaje',done:false},
+      {id:'i10',text:'Vacuna fiebre amarilla / consultar médico',done:false},
+      {id:'i11',text:'Activar roaming o SIM local RD',done:false},
+      {id:'i12',text:'Descargar mapas offline (Google Maps)',done:false},
+      {id:'i13',text:'Cambiar euros a pesos dominicanos o dólares',done:false},
+      {id:'i14',text:'Avisar al banco del viaje internacional',done:false},
+    ]},
+    { id:'cat-equipaje', name:'Equipaje esencial', emoji:'🧳', collapsed:false, items:[
+      {id:'e1',text:'Protector solar (FPS 50+)',done:false},
+      {id:'e2',text:'Repelente de mosquitos (DEET recomendado)',done:false},
+      {id:'e3',text:'Adaptador de corriente (tipo A/B, 110V)',done:false},
+      {id:'e4',text:'Botiquín básico (antidiarreicos, antihistamínicos)',done:false},
+      {id:'e5',text:'Ropa ligera (verano caribeño)',done:false},
+      {id:'e6',text:'Calzado de agua / chanclas',done:false},
+      {id:'e7',text:'Cámara / GoPro',done:false},
+    ]},
+    { id:'cat-actividades', name:'Actividades a reservar', emoji:'🏖', collapsed:false, items:[
+      {id:'a1',text:'Excursión Isla Saona (barco)',done:false},
+      {id:'a2',text:'Visita Ciudad Colonial de Santo Domingo',done:false},
+      {id:'a3',text:'Cascadas El Limón (Samaná)',done:false},
+      {id:'a4',text:'Avistamiento de ballenas (si es temporada)',done:false},
+      {id:'a5',text:'Buceo o snorkel',done:false},
+    ]},
+  ];
+
+  function clUid() { return 'c' + Date.now() + Math.random().toString(36).slice(2,6); }
+
+  function renderChecklist() {
+    const container = document.getElementById('cl-categories');
+    if (!container) return;
+    container.innerHTML = '';
+    clCats.forEach(cat => {
+      const section = document.createElement('div');
+      section.className = 'cl-category' + (cat.collapsed ? ' cl-cat-collapsed' : '');
+      section.id = 'clcat-' + cat.id;
+
+      const done  = cat.items.filter(i => i.done).length;
+      const total = cat.items.length;
+
+      section.innerHTML = `
+        <div class="cl-cat-header" onclick="toggleCatCollapse('${cat.id}')">
+          <span class="cl-cat-emoji" title="Cambiar emoji" onclick="event.stopPropagation();changeCatEmoji('${cat.id}')">${cat.emoji}</span>
+          <input class="cl-cat-name" value="${cat.name}" onclick="event.stopPropagation()"
+            onchange="renameCat('${cat.id}',this.value)" onkeydown="if(event.key==='Enter')this.blur()">
+          <span class="cl-cat-count">${done}/${total}</span>
+          <span class="cl-cat-chevron">▾</span>
+          <button class="cl-cat-del" title="Eliminar categoría" onclick="event.stopPropagation();deleteCat('${cat.id}')">🗑</button>
+        </div>
+        <div class="cl-cat-body" id="clbody-${cat.id}"></div>`;
+
+      container.appendChild(section);
+
+      const body = document.getElementById('clbody-' + cat.id);
+
+      // items
+      cat.items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'check-item' + (item.done ? ' done' : '');
+        div.innerHTML = `
+          <div class="check-box" onclick="event.stopPropagation();toggleCheckV2('${cat.id}','${item.id}')">✓</div>
+          <div class="check-text" style="flex:1;" onclick="event.stopPropagation();toggleCheckV2('${cat.id}','${item.id}')">${item.text}</div>
+          <div class="check-item-actions">
+            <button class="check-action-btn" title="Mover a otra categoría" onclick="event.stopPropagation();openMoveModal('${cat.id}','${item.id}')">↕</button>
+            <button class="check-action-btn del" title="Eliminar" onclick="event.stopPropagation();deleteCheckV2('${cat.id}','${item.id}')">×</button>
+          </div>`;
+        body.appendChild(div);
+      });
+
+      // add item row
+      const addRow = document.createElement('div');
+      addRow.className = 'check-add-row';
+      addRow.style.padding = '0.3rem 0.8rem 0.5rem';
+      addRow.innerHTML = `
+        <input class="check-new-input" id="cl-input-${cat.id}" placeholder="＋ Nueva tarea…"
+          onkeydown="addCheckV2(event,'${cat.id}')">
+        <button class="check-add-btn" onclick="addCheckBtnV2('${cat.id}')">＋</button>`;
+      body.appendChild(addRow);
+    });
+
+    updateClProgress();
   }
 
+  function updateClProgress() {
+    let total = 0, done = 0;
+    clCats.forEach(c => { total += c.items.length; done += c.items.filter(i=>i.done).length; });
+    const pct = total ? Math.round(done/total*100) : 0;
+    const bar = document.getElementById('cl-progress-bar');
+    const txt = document.getElementById('cl-progress-txt');
+    if (bar) bar.style.width = pct + '%';
+    if (txt) txt.textContent = `${done} / ${total} completados (${pct}%)`;
+  }
+
+  function toggleCatCollapse(catId) {
+    const cat = clCats.find(c => c.id === catId);
+    if (cat) { cat.collapsed = !cat.collapsed; renderChecklist(); saveAll(); }
+  }
+  function renameCat(catId, name) {
+    const cat = clCats.find(c => c.id === catId);
+    if (cat) { cat.name = name; saveAll(); updateClProgress(); }
+  }
+  function deleteCat(catId) {
+    const cat = clCats.find(c => c.id === catId);
+    if (!cat) return;
+    if (cat.items.length > 0 && !confirm(`¿Eliminar la categoría "${cat.name}" y sus ${cat.items.length} tarea(s)?`)) return;
+    clCats = clCats.filter(c => c.id !== catId);
+    renderChecklist(); saveAll();
+  }
+  function changeCatEmoji(catId) {
+    const emojis = ['📋','🧳','🏖','✈','💰','📍','🎯','🛒','📝','🎉','🔑','💊','📸','🌊','🗺'];
+    const cat = clCats.find(c => c.id === catId);
+    if (!cat) return;
+    const cur = emojis.indexOf(cat.emoji);
+    cat.emoji = emojis[(cur + 1) % emojis.length];
+    renderChecklist(); saveAll();
+  }
+  function toggleCheckV2(catId, itemId) {
+    const cat  = clCats.find(c => c.id === catId);
+    const item = cat?.items.find(i => i.id === itemId);
+    if (item) { item.done = !item.done; renderChecklist(); saveAll(); }
+  }
+  function deleteCheckV2(catId, itemId) {
+    const cat = clCats.find(c => c.id === catId);
+    if (cat) { cat.items = cat.items.filter(i => i.id !== itemId); renderChecklist(); saveAll(); }
+  }
+  function addCheckV2(event, catId) {
+    if (event.key !== 'Enter') return;
+    _doAddCheckV2(catId, event.target);
+  }
+  function addCheckBtnV2(catId) {
+    _doAddCheckV2(catId, document.getElementById('cl-input-' + catId));
+  }
+  function _doAddCheckV2(catId, input) {
+    const text = (input?.value || '').trim();
+    if (!text) return;
+    const cat = clCats.find(c => c.id === catId);
+    if (!cat) return;
+    cat.items.push({ id: clUid(), text, done: false });
+    input.value = '';
+    renderChecklist(); saveAll();
+  }
+  function addCategory(event) {
+    if (event.key !== 'Enter') return;
+    addCategoryBtn();
+  }
+  function addCategoryBtn() {
+    const input = document.getElementById('new-cat-input');
+    const name  = (input?.value || '').trim();
+    if (!name) return;
+    const emojis = ['📋','🎯','🛒','📝','🎉','🔑','💊','📸'];
+    clCats.push({ id: clUid(), name, emoji: emojis[clCats.length % emojis.length], collapsed: false, items: [] });
+    input.value = '';
+    renderChecklist(); saveAll();
+  }
+
+  // Move item modal
+  function openMoveModal(catId, itemId) {
+    movingItem = { catId, itemId };
+    const modal   = document.getElementById('move-modal');
+    const catsDiv = document.getElementById('move-modal-cats');
+    catsDiv.innerHTML = '';
+    clCats.filter(c => c.id !== catId).forEach(cat => {
+      const btn = document.createElement('button');
+      btn.style.cssText = "width:100%;text-align:left;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--white);border-radius:8px;padding:0.65rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer;";;
+      btn.textContent = cat.emoji + ' ' + cat.name;
+      btn.onclick = () => moveItemTo(cat.id);
+      catsDiv.appendChild(btn);
+    });
+    if (clCats.filter(c => c.id !== catId).length === 0) {
+      catsDiv.innerHTML = '<div style="color:var(--muted);font-size:0.82rem;">No hay otras categorías. Crea una primero.</div>';
+    }
+    modal.style.display = 'flex';
+  }
+  function moveItemTo(targetCatId) {
+    if (!movingItem) return;
+    const srcCat  = clCats.find(c => c.id === movingItem.catId);
+    const tgtCat  = clCats.find(c => c.id === targetCatId);
+    const item    = srcCat?.items.find(i => i.id === movingItem.itemId);
+    if (srcCat && tgtCat && item) {
+      srcCat.items = srcCat.items.filter(i => i.id !== movingItem.itemId);
+      tgtCat.items.push(item);
+    }
+    closeMoveModal();
+    renderChecklist(); saveAll();
+  }
+  function closeMoveModal() {
+    document.getElementById('move-modal').style.display = 'none';
+    movingItem = null;
+  }
+
+  // Legacy wrappers (keep for safety)
+  function toggleCheck(el) { /* replaced by toggleCheckV2 */ }
+  function deleteCheck(event, btn) { /* replaced by deleteCheckV2 */ }
+  function addCheck(event, containerId) { /* replaced by addCheckV2 */ }
+  function addCheckBtn(id) { /* replaced by addCheckBtnV2 */ }
+
   // ═══════════════════════════════════════════════════════════
-  //  PDF — CLOUDINARY
+  //  PDF — CLOUDINARY (upload only; viewer uses <object> tag)
   // ═══════════════════════════════════════════════════════════
   let pdfDocs = [];
 
@@ -2310,32 +2782,22 @@
         const fd = new FormData();
         fd.append('file', file);
         fd.append('upload_preset', CLOUDINARY.preset);
-        // Explicitly tell Cloudinary this is a raw/document resource
-        // This ensures the file is stored and served as a raw asset with proper CORS
         fd.append('resource_type', 'raw');
-
-        const res = await fetch(CLOUDINARY.uploadUrl, {method:'POST', body:fd});
+        const res  = await fetch(CLOUDINARY.uploadUrl, {method:'POST', body:fd});
         const data = await res.json();
         if (data.error) throw new Error(data.error.message);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        // Build the correct raw URL — replace any /image/ or /auto/ with /raw/
-        const rawUrl = data.secure_url.replace('/image/upload/', '/raw/upload/').replace('/auto/upload/', '/raw/upload/');
-
-        pdfDocs.push({
-          id:        data.public_id,
-          name:      file.name,
-          size:      file.size,
-          url:       rawUrl,
-          public_id: data.public_id,
-        });
+        if (!res.ok)    throw new Error('HTTP ' + res.status);
+        const rawUrl = data.secure_url
+          .replace('/image/upload/', '/raw/upload/')
+          .replace('/auto/upload/',  '/raw/upload/');
+        pdfDocs.push({ id: data.public_id, name: file.name, size: file.size, url: rawUrl, public_id: data.public_id });
         renderPdfs();
         saveAll();
         setSyncUI('ok', `${file.name} subido`);
       } catch(e) {
         console.error('upload error', e);
         setSyncUI('error', `Error: ${e.message}`);
-        alert(`Error al subir: ${e.message}`);
+        alert('Error al subir: ' + e.message);
       }
     }
   }
@@ -2349,36 +2811,42 @@
     }
     list.innerHTML = '';
     pdfDocs.forEach(doc => {
-      const sz = doc.size > 1048576 ? (doc.size/1048576).toFixed(1)+' MB' : Math.round(doc.size/1024)+' KB';
+      const sz     = doc.size > 1048576 ? (doc.size/1048576).toFixed(1)+' MB' : Math.round(doc.size/1024)+' KB';
       const safeId = String(doc.id).replace(/['"\\]/g, '');
-      const item = document.createElement('div');
+      const item   = document.createElement('div');
       item.className = 'pdf-item';
-      item.innerHTML = `
+      item.innerHTML = \`
         <div class="pdf-icon">📄</div>
-        <div class="pdf-name" title="${doc.name}">${doc.name}</div>
-        <div class="pdf-size">${sz}</div>
+        <div class="pdf-name" title="\${doc.name}">\${doc.name}</div>
+        <div class="pdf-size">\${sz}</div>
         <div class="pdf-actions">
-          <button class="pdf-btn" onclick="viewPdf('${safeId}')">👁 Ver</button>
-          <button class="pdf-btn del" onclick="deletePdf('${safeId}')">🗑</button>
-        </div>`;
+          <button class="pdf-btn" onclick="viewPdf('\${safeId}')">👁 Ver</button>
+          <button class="pdf-btn del" onclick="deletePdf('\${safeId}')">🗑</button>
+        </div>\`;
       list.appendChild(item);
     });
   }
-  // ─── PDF.js VIEWER ───────────────────────────────────────────
-  let pdfJsLib   = null;
-  let currentPdf = null;
-  let currentPage = 1;
-  let totalPages  = 1;
-  let currentScale = 1.5;
 
-
+  function viewPdf(id) {
+    const doc = pdfDocs.find(d => String(d.id) === id);
+    if (!doc) return;
+    document.getElementById('pdf-viewer-name').textContent = '📄 ' + doc.name;
+    document.getElementById('pdf-download-link').href      = doc.url;
+    document.getElementById('pdf-fallback-link').href      = doc.url;
+    const obj = document.getElementById('pdf-viewer-object');
+    obj.data  = doc.url;
+    const wrap = document.getElementById('pdf-viewer-wrap');
+    wrap.style.display = 'block';
+    wrap.scrollIntoView({behavior:'smooth', block:'start'});
+  }
 
   function closePdfViewer() {
-    document.getElementById('pdf-viewer-wrap').style.display = 'none';
-    document.getElementById('pdf-pages').innerHTML = '';
-    document.getElementById('pdf-controls').style.display = 'none';
-    currentPdf = null;
+    const wrap = document.getElementById('pdf-viewer-wrap');
+    if (wrap) wrap.style.display = 'none';
+    const obj = document.getElementById('pdf-viewer-object');
+    if (obj)  obj.data = '';
   }
+
   function deletePdf(id) {
     pdfDocs = pdfDocs.filter(d => String(d.id) !== id);
     renderPdfs(); closePdfViewer(); saveAll();
@@ -2413,10 +2881,167 @@
   }
 
   // ═══════════════════════════════════════════════════════════
+  //  UTILS — CURRENCY CONVERTER
+  // ═══════════════════════════════════════════════════════════
+  let eurUsdRate = 1.08; // fallback EUR→USD
+  let eurDopRate = 64;   // fallback EUR→DOP, editable by user
+
+  async function fetchExchangeRate() {
+    const status = document.getElementById('rate-status');
+    status.textContent = 'Actualizando…';
+    try {
+      const res = await fetch('https://api.frankfurter.app/latest?from=EUR&to=USD,DOP');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      eurUsdRate = data.rates.USD;
+      eurDopRate = data.rates.DOP;
+      document.getElementById('conv-rate').value = eurDopRate.toFixed(2);
+      status.textContent = `✓ Actualizado: 1€ = ${eurDopRate.toFixed(0)} DOP / ${eurUsdRate.toFixed(2)} USD`;
+      convertCurrency('eur');
+      const rateEl = document.getElementById('info-rate-txt');
+      if (rateEl) rateEl.textContent = `~${eurDopRate.toFixed(0)} DOP/€`;
+    } catch(e) {
+      status.textContent = `Usando tasa manual (${eurDopRate} DOP/€)`;
+    }
+  }
+
+  function convertCurrency(from) {
+    eurDopRate = parseFloat(document.getElementById('conv-rate').value) || 64;
+    const usdDopRate = eurDopRate / eurUsdRate;
+
+    let eur = parseFloat(document.getElementById('conv-eur').value) || 0;
+    let dop = parseFloat(document.getElementById('conv-dop').value) || 0;
+    let usd = parseFloat(document.getElementById('conv-usd').value) || 0;
+
+    if (from === 'eur') {
+      dop = eur * eurDopRate;
+      usd = eur * eurUsdRate;
+      document.getElementById('conv-dop').value = dop ? dop.toFixed(0) : '';
+      document.getElementById('conv-usd').value = usd ? usd.toFixed(2) : '';
+    } else if (from === 'dop') {
+      eur = dop / eurDopRate;
+      usd = dop / usdDopRate;
+      document.getElementById('conv-eur').value = eur ? eur.toFixed(2) : '';
+      document.getElementById('conv-usd').value = usd ? usd.toFixed(2) : '';
+    } else if (from === 'usd') {
+      eur = usd / eurUsdRate;
+      dop = usd * usdDopRate;
+      document.getElementById('conv-eur').value = eur ? eur.toFixed(2) : '';
+      document.getElementById('conv-dop').value = dop ? dop.toFixed(0) : '';
+    }
+
+    const result = document.getElementById('conv-result');
+    if (eur > 0) {
+      result.style.display = 'block';
+      result.innerHTML = `
+        <strong style="color:var(--white);">${eur.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})} €</strong>
+        &nbsp;=&nbsp;
+        <strong style="color:var(--turquoise);">${dop.toLocaleString('es-ES',{maximumFractionDigits:0})} DOP</strong>
+        &nbsp;=&nbsp;
+        <strong style="color:rgba(253,250,245,0.7);">${usd.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})} USD</strong>
+        <br><span style="font-size:0.7rem;color:var(--muted);">Tasa: 1€ = ${eurDopRate.toFixed(0)} DOP · 1€ = ${eurUsdRate.toFixed(2)} USD</span>`;
+      calcSplit(); // update splitter if it has a value
+    } else {
+      result.style.display = 'none';
+    }
+  }
+
+  function quickConv(eur) {
+    document.getElementById('conv-eur').value = eur;
+    convertCurrency('eur');
+    document.getElementById('conv-result').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  // ── EXPENSE SPLITTER ──────────────────────────────────────
+  function calcSplit() {
+    const total   = parseFloat(document.getElementById('split-total').value) || 0;
+    const people  = parseInt(document.getElementById('split-people').value)  || 5;
+    const result  = document.getElementById('split-result');
+    if (total <= 0) { result.style.display = 'none'; return; }
+    const pp    = total / people;
+    const ppDop = pp * eurDopRate;
+    const ppUsd = pp * eurUsdRate;
+    document.getElementById('split-pp').textContent  = pp.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}) + '€';
+    document.getElementById('split-dop').textContent = ppDop.toLocaleString('es-ES',{maximumFractionDigits:0}) + ' DOP';
+    document.getElementById('split-usd').textContent = ppUsd.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' USD';
+    result.style.display = 'block';
+  }
+
+  // ── CLOCKS ────────────────────────────────────────────────
+  function updateClocks() {
+    const now = new Date();
+    const esTime = now.toLocaleTimeString('es-ES', {timeZone:'Europe/Madrid', hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    const esDate = now.toLocaleDateString('es-ES', {timeZone:'Europe/Madrid', weekday:'short', day:'numeric', month:'short'});
+    const rdTime = now.toLocaleTimeString('es-ES', {timeZone:'America/Santo_Domingo', hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    const rdDate = now.toLocaleDateString('es-ES', {timeZone:'America/Santo_Domingo', weekday:'short', day:'numeric', month:'short'});
+
+    // Utils tab clocks
+    const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    setEl('time-es', esTime); setEl('date-es', esDate);
+    setEl('time-rd', rdTime); setEl('date-rd', rdDate);
+
+    // Info tab clocks
+    setEl('info-time-es', esTime); setEl('info-time-rd', rdTime);
+    setEl('info-date-rd', rdDate);
+
+    const esMid = new Date(now.toLocaleString('en-US', {timeZone:'Europe/Madrid'}));
+    const rdMid = new Date(now.toLocaleString('en-US', {timeZone:'America/Santo_Domingo'}));
+    const diffH = Math.round((esMid - rdMid) / 3600000);
+    const sign  = diffH > 0 ? '+' : '';
+    const diffTxt = `España va ${sign}${diffH}h respecto a RD`;
+    setEl('time-diff', diffTxt);
+    setEl('info-time-diff', diffTxt);
+  }
+  setInterval(updateClocks, 1000);
+  updateClocks();
+
+  // Info-tab converter (mirrors utils converter but independent inputs)
+  function infoConvert(from) {
+    const rate = eurDopRate || 64;
+    let eur = parseFloat(document.getElementById('info-conv-eur').value) || 0;
+    let dop = parseFloat(document.getElementById('info-conv-dop').value) || 0;
+    if (from === 'eur') {
+      dop = eur * rate;
+      document.getElementById('info-conv-dop').value = dop ? dop.toFixed(0) : '';
+    } else {
+      eur = dop / rate;
+      document.getElementById('info-conv-eur').value = eur ? eur.toFixed(2) : '';
+    }
+    const rateEl = document.getElementById('info-rate-txt');
+    if (rateEl) rateEl.textContent = `~${rate.toFixed(0)} DOP/€`;
+  }
+  function infoQuick(eur) {
+    document.getElementById('info-conv-eur').value = eur;
+    infoConvert('eur');
+  }
+
+  // ── TIP CALCULATOR ────────────────────────────────────────
+  function calcTip() {
+    const total  = parseFloat(document.getElementById('tip-total').value) || 0;
+    const pct    = parseFloat(document.getElementById('tip-pct').value)   || 0;
+    const people = parseInt(document.getElementById('split-people').value) || 5;
+    const result = document.getElementById('tip-result');
+    if (total <= 0) { result.style.display = 'none'; return; }
+    const tip     = total * pct / 100;
+    const withTip = total + tip;
+    const pp      = withTip / people;
+    document.getElementById('tip-n').textContent      = people;
+    document.getElementById('tip-amount').textContent = tip.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}) + '€';
+    document.getElementById('tip-with').textContent   = withTip.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}) + '€';
+    document.getElementById('tip-pp').textContent     = pp.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}) + '€';
+    result.style.display = 'block';
+  }
+  function setTipPct(pct) {
+    document.getElementById('tip-pct').value = pct;
+    calcTip();
+  }
+
+  // ═══════════════════════════════════════════════════════════
   //  INIT
   // ═══════════════════════════════════════════════════════════
   setTimeout(updateProgress, 300);
-  fetchRemote(); // carga datos desde JSONBin al iniciar
+  fetchRemote();
+  fetchExchangeRate(); // load live exchange rate on start // carga datos desde JSONBin al iniciar
 
   // Re-sync cuando el dispositivo vuelve al foco (pantalla se desbloquea, tab se activa)
   document.addEventListener('visibilitychange', () => {
