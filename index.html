@@ -1090,6 +1090,23 @@
   .check-item:hover .check-del { display: block; }
   .check-del:hover { color: var(--coral); }
 
+  .passport-input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    color: var(--gold);
+    font-family: monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.5rem;
+    outline: none;
+    width: 100%;
+    min-width: 110px;
+    transition: border-color 0.2s;
+  }
+  .passport-input:focus { border-color: var(--gold); }
+  .passport-input::placeholder { color: rgba(107,138,149,0.5); font-family: 'DM Sans', sans-serif; letter-spacing: 0; }
+
   .check-add-row {
     padding: 0.2rem 0.8rem 0.4rem;
     display: flex;
@@ -1394,9 +1411,8 @@
 
 <!-- TABS — bottom bar -->
 <div class="tabs">
-  <button class="tab-btn active" onclick="showTab('vuelos',this)"><span class="tab-icon">✈</span><span class="tab-label">Vuelos</span></button>
+  <button class="tab-btn active" onclick="showTab('vuelos',this)"><span class="tab-icon">✈</span><span class="tab-label">Viaje</span></button>
   <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗺</span><span class="tab-label">Itinerario</span></button>
-  <button class="tab-btn" onclick="showTab('gastos',this)"><span class="tab-icon">💰</span><span class="tab-label">Gastos</span></button>
   <button class="tab-btn" onclick="showTab('ruta',this)"><span class="tab-icon">📍</span><span class="tab-label">Ruta</span></button>
   <button class="tab-btn" onclick="showTab('checklist',this)"><span class="tab-icon">✅</span><span class="tab-label">Check</span></button>
   <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">ℹ️</span><span class="tab-label">Info</span></button>
@@ -1408,7 +1424,7 @@
 
   <!-- VUELOS -->
   <div id="panel-vuelos" class="panel active">
-    <div class="section-title">✈ Vuelos</div>
+    <div class="section-title">✈ Información del Viaje</div>
 
     <div class="alert-box">
       <div class="icon">⚠️</div>
@@ -1489,6 +1505,112 @@
         </div>
       </div>
     </div>
+
+    <!-- SEGURO DE VIAJE -->
+    <div style="margin-top:1.5rem;">
+      <div class="section-title" style="font-size:1.1rem">🛡️ Seguro de Viaje · IATI</div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(44,196,196,0.2);border-radius:14px;padding:1.2rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:0.8rem;margin-bottom:1rem;">
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Póliza</div>
+            <div style="font-size:1.05rem;font-weight:700;color:var(--turquoise);">471339065</div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Nº Viaje</div>
+            <div style="font-size:1.05rem;font-weight:700;color:var(--white);">001641513</div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Importe</div>
+            <div style="font-size:1.05rem;font-weight:700;color:var(--gold);">308,72 €</div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Asegurados</div>
+            <div style="font-size:1.05rem;font-weight:700;color:var(--white);">5 personas</div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Periodo</div>
+            <div style="font-size:0.9rem;font-weight:600;color:var(--white);">25 Jul → 9 Ago 2026</div>
+            <div style="font-size:0.72rem;color:var(--muted);">16 días</div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Destino</div>
+            <div style="font-size:0.9rem;font-weight:600;color:var(--white);">República Dominicana</div>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:0.9rem;display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Compañía aseguradora</div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--white);">ARAG</div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Teléfono emergencias</div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--turquoise);">
+              <a href="tel:+34627605464" style="color:var(--turquoise);text-decoration:none;">+34 627 605 464</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Email</div>
+            <div style="font-size:0.82rem;color:var(--white);">lsd1091@gmail.com</div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">Emitido</div>
+            <div style="font-size:0.82rem;color:var(--white);">26 Jul 2026 · 19:56</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARKING -->
+    <div style="margin-top:1.5rem;">
+      <div class="section-title" style="font-size:1.1rem">🅿️ Parking Aeropuerto</div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,168,67,0.25);border-radius:14px;padding:1.2rem;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;margin-bottom:1rem;">
+          <div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:0.2rem;">Viparking Madrid · Subterráneo</div>
+            <div style="font-size:0.78rem;color:var(--muted);">Valet (aparcacoches) · Cubierto</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.2rem;">Nº Reserva</div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--gold);">89GHFHB</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1rem;">
+          <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:0.8rem;">
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">🛫 Entrada</div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--white);">Sáb 25 Jul 2026</div>
+            <div style="font-size:1rem;font-weight:700;color:var(--turquoise);">12:45</div>
+            <div style="font-size:0.72rem;color:var(--muted);">Madrid-Barajas</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:0.8rem;">
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem;">🛬 Salida</div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--white);">Dom 9 Ago 2026</div>
+            <div style="font-size:1rem;font-weight:700;color:var(--turquoise);">09:45</div>
+            <div style="font-size:0.72rem;color:var(--muted);">Madrid-Barajas</div>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:0.9rem;">
+          <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;font-weight:600;">📍 Punto de entrega: Terminal de salidas Aeropuerto Madrid-Barajas · Llega directamente a la entrada de salidas de la terminal</div>
+          <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;font-weight:600;">📞 Teléfono según hora:</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:0.6rem;">
+              <div style="font-size:0.65rem;color:var(--muted);margin-bottom:0.3rem;">04:00 – 14:00</div>
+              <div style="font-size:0.82rem;font-weight:600;">
+                <a href="tel:633841896" style="color:var(--turquoise);text-decoration:none;display:block;">633 841 896</a>
+                <a href="tel:633638509" style="color:var(--turquoise);text-decoration:none;display:block;">633 638 509</a>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:0.6rem;">
+              <div style="font-size:0.65rem;color:var(--muted);margin-bottom:0.3rem;">14:00 – 00:45</div>
+              <div style="font-size:0.82rem;font-weight:600;">
+                <a href="tel:722485637" style="color:var(--turquoise);text-decoration:none;display:block;">722 485 637</a>
+                <a href="tel:622300188" style="color:var(--turquoise);text-decoration:none;display:block;">622 300 188</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- ITINERARIO -->
@@ -1510,14 +1632,6 @@
         <div class="progress-stop" id="ps-pp"><div class="dot"></div>Puerto Plata</div>
         <div class="progress-stop" id="ps-terrenas"><div class="dot"></div>Las Terrenas</div>
         <div class="progress-stop" id="ps-punta"><div class="dot"></div>Punta Cana</div>
-      </div>
-    </div>
-
-    <div class="alert-box">
-      <div class="icon">🎟️</div>
-      <div class="msg">
-        <strong>¡Pendiente: Comprar entradas barco e Isla Saona!</strong>
-        Para la parada en Casa Rural El Paraíso de Saona hace falta comprar entradas. No olvidarlo.
       </div>
     </div>
 
@@ -1700,54 +1814,6 @@
     </div>
   </div>
 
-  <!-- GASTOS -->
-  <div id="panel-gastos" class="panel">
-    <div class="section-title">💰 Resumen de Gastos</div>
-
-    <div class="budget-overview">
-      <div class="budget-box total"><div class="lbl">Total</div><div class="val" id="g-total">—</div></div>
-      <div class="budget-box paid-box"><div class="lbl">Pagado</div><div class="val" id="g-paid">—</div></div>
-      <div class="budget-box unpaid-box"><div class="lbl">Pendiente</div><div class="val" id="g-unpaid">—</div></div>
-      <div class="budget-box per-person"><div class="lbl">Por persona (÷5)</div><div class="val" id="g-pp">—</div></div>
-    </div>
-
-    <table class="expense-table" id="expense-table">
-      <thead>
-        <tr>
-          <th>Concepto</th>
-          <th>Importe</th>
-          <th>Responsable</th>
-          <th>Estado</th>
-          <th style="width:2rem"></th>
-        </tr>
-      </thead>
-      <tbody id="expense-tbody"></tbody>
-    </table>
-
-    <!-- ADD ROW FORM -->
-    <div class="add-expense-form" id="add-expense-form" style="display:none;">
-      <div class="add-expense-grid">
-        <input class="exp-input" id="exp-concepto" placeholder="Concepto (ej. El Toucan, Bayahibe)">
-        <input class="exp-input" id="exp-importe" placeholder="Importe (ej. 100)" type="number" min="0" step="0.01">
-        <input class="exp-input" id="exp-resp" placeholder="Responsable (ej. Jana)">
-        <select class="exp-input" id="exp-estado">
-          <option value="unpaid">Pendiente</option>
-          <option value="paid">Pagado</option>
-        </select>
-      </div>
-      <div style="display:flex;gap:0.6rem;margin-top:0.7rem;">
-        <button class="save-btn" onclick="confirmAddExpense()">✓ Añadir gasto</button>
-        <button class="save-btn" style="background:rgba(255,255,255,0.08);color:var(--white);" onclick="cancelAddExpense()">Cancelar</button>
-      </div>
-    </div>
-
-    <button class="add-row-btn" id="add-expense-btn" onclick="showAddExpense()">＋ Añadir gasto</button>
-
-    <div style="margin-top:1.2rem;padding:1rem;background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);border-radius:12px;font-size:0.82rem;color:rgba(253,250,245,0.8);">
-      <strong style="color:var(--gold);">💡 Nota:</strong> Clic en el estado de cada fila para alternar entre Pendiente/Pagado. Los totales se recalculan automáticamente.
-    </div>
-  </div>
-
   <!-- RUTA -->
   <div id="panel-ruta" class="panel">
     <div class="section-title">📍 Ruta del Viaje</div>
@@ -1852,11 +1918,6 @@
   <div id="panel-checklist" class="panel">
     <div class="section-title">✅ Checklist del Viaje</div>
 
-    <div class="alert-box" style="border-color:rgba(232,97,77,0.5)">
-      <div class="icon">🎟️</div>
-      <div class="msg"><strong>Prioritario: Comprar entradas barco + Isla Saona</strong> Antes del viaje.</div>
-    </div>
-
     <!-- Progress bar -->
     <div style="margin-bottom:1.2rem;">
       <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">
@@ -1892,78 +1953,57 @@
   <div id="panel-notas" class="panel">
     <div class="section-title">ℹ️ Información</div>
 
-    <!-- MINI UTILS: Divisa + Reloj -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
-
-      <!-- RELOJ RD -->
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem;text-align:center;">
-        <div style="font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">🇩🇴 Rep. Dominicana</div>
-        <div id="info-time-rd" style="font-size:1.8rem;font-weight:700;color:var(--turquoise);font-variant-numeric:tabular-nums;line-height:1;"></div>
-        <div id="info-date-rd" style="font-size:0.7rem;color:var(--muted);margin-top:0.3rem;"></div>
-        <div style="margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.06);">
-          <div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.2rem;">🇪🇸 España</div>
-          <div id="info-time-es" style="font-size:1.1rem;font-weight:600;color:var(--white);font-variant-numeric:tabular-nums;"></div>
-        </div>
-        <div id="info-time-diff" style="font-size:0.65rem;color:rgba(107,138,149,0.6);margin-top:0.4rem;"></div>
-      </div>
-
-      <!-- CONVERSOR RÁPIDO -->
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem;">
-        <div style="font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.7rem;">💱 Conversor rápido</div>
-        <div style="margin-bottom:0.5rem;">
-          <label style="font-size:0.65rem;color:var(--muted);display:block;margin-bottom:0.2rem;">Euros (€)</label>
-          <input class="util-input" id="info-conv-eur" type="number" placeholder="0" min="0"
-            oninput="infoConvert('eur')" style="font-size:0.9rem;padding:0.4rem 0.6rem;">
-        </div>
-        <div style="margin-bottom:0.5rem;">
-          <label style="font-size:0.65rem;color:var(--muted);display:block;margin-bottom:0.2rem;">Pesos Dom. (DOP)</label>
-          <input class="util-input" id="info-conv-dop" type="number" placeholder="0" min="0"
-            oninput="infoConvert('dop')" style="font-size:0.9rem;padding:0.4rem 0.6rem;">
-        </div>
-        <div style="font-size:0.65rem;color:var(--muted);text-align:right;">
-          Tasa: <span id="info-rate-txt">~64 DOP/€</span>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem;">
-          <button class="quick-btn" style="font-size:0.68rem;padding:0.2rem 0.5rem;" onclick="infoQuick(10)">10€</button>
-          <button class="quick-btn" style="font-size:0.68rem;padding:0.2rem 0.5rem;" onclick="infoQuick(50)">50€</button>
-          <button class="quick-btn" style="font-size:0.68rem;padding:0.2rem 0.5rem;" onclick="infoQuick(100)">100€</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- DOCUMENTOS PDF -->
+    <!-- VIAJEROS -->
     <div style="margin-bottom:2rem;">
-      <div class="section-title" style="font-size:1.1rem">📄 Documentos del Viaje</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">Adjunta PDFs del grupo (billetes, reservas, seguros…). Se guardan en tu navegador.</div>
-
-      <div id="pdf-list" style="display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1rem;"></div>
-
-      <label class="pdf-upload-btn" for="pdf-upload-input">
-        <span>＋ Adjuntar PDF</span>
-        <input type="file" id="pdf-upload-input" accept="application/pdf" multiple style="display:none" onchange="handlePdfUpload(event)">
-      </label>
-      <div style="font-size:0.7rem;color:rgba(107,138,149,0.6);margin-top:0.5rem;">Los PDFs se sincronizan entre todos los dispositivos vía JSONBin. Tamaño máximo recomendado: 4 MB por archivo.</div>
-    </div>
-
-    <!-- PDF VIEWER -->
-    <div id="pdf-viewer-wrap" style="display:none;margin-bottom:2rem;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.7rem;flex-wrap:wrap;gap:0.5rem;">
-        <div id="pdf-viewer-name" style="font-size:0.85rem;font-weight:600;color:var(--turquoise);"></div>
-        <div style="display:flex;gap:0.5rem;">
-          <a id="pdf-download-link" href="#" target="_blank" style="background:rgba(44,196,196,0.15);border:1px solid rgba(44,196,196,0.3);color:var(--turquoise);border-radius:6px;padding:0.3rem 0.8rem;font-size:0.78rem;text-decoration:none;">⬇ Descargar</a>
-          <button onclick="closePdfViewer()" style="background:rgba(255,255,255,0.08);border:none;color:var(--white);border-radius:6px;padding:0.3rem 0.8rem;cursor:pointer;font-size:0.78rem;">✕ Cerrar</button>
-        </div>
+      <div class="section-title" style="font-size:1.1rem">👥 Viajeros</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.8rem;">El campo de pasaporte es editable — se sincroniza con el grupo.</div>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
+        <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+          <thead>
+            <tr style="background:rgba(255,255,255,0.05);">
+              <th style="text-align:left;padding:0.7rem 0.8rem;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;white-space:nowrap;">Nombre</th>
+              <th style="text-align:left;padding:0.7rem 0.8rem;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;white-space:nowrap;">Nacimiento</th>
+              <th style="text-align:left;padding:0.7rem 0.8rem;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;">NIF</th>
+              <th style="text-align:left;padding:0.7rem 0.8rem;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;">Pasaporte ✏️</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-top:1px solid rgba(255,255,255,0.06);">
+              <td style="padding:0.7rem 0.8rem;font-weight:600;color:var(--white);white-space:nowrap;">Luis Serrano</td>
+              <td style="padding:0.7rem 0.8rem;color:rgba(253,250,245,0.7);white-space:nowrap;">4 Oct 1991</td>
+              <td style="padding:0.7rem 0.8rem;font-family:monospace;color:var(--turquoise);letter-spacing:0.04em;">73014639N</td>
+              <td style="padding:0.4rem 0.6rem;"><input class="passport-input" id="pass-luis" placeholder="Nº pasaporte" onchange="savePassports()"></td>
+            </tr>
+            <tr style="border-top:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+              <td style="padding:0.7rem 0.8rem;font-weight:600;color:var(--white);white-space:nowrap;">Antonio Galindo</td>
+              <td style="padding:0.7rem 0.8rem;color:rgba(253,250,245,0.7);white-space:nowrap;">13 Jul 1985</td>
+              <td style="padding:0.7rem 0.8rem;font-family:monospace;color:var(--turquoise);letter-spacing:0.04em;">77341955Q</td>
+              <td style="padding:0.4rem 0.6rem;"><input class="passport-input" id="pass-antonio" placeholder="Nº pasaporte" onchange="savePassports()"></td>
+            </tr>
+            <tr style="border-top:1px solid rgba(255,255,255,0.06);">
+              <td style="padding:0.7rem 0.8rem;font-weight:600;color:var(--white);white-space:nowrap;">Jana Lafarga</td>
+              <td style="padding:0.7rem 0.8rem;color:rgba(253,250,245,0.7);white-space:nowrap;">10 Nov 1976</td>
+              <td style="padding:0.7rem 0.8rem;font-family:monospace;color:var(--turquoise);letter-spacing:0.04em;">29119767L</td>
+              <td style="padding:0.4rem 0.6rem;"><input class="passport-input" id="pass-jana" placeholder="Nº pasaporte" onchange="savePassports()"></td>
+            </tr>
+            <tr style="border-top:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+              <td style="padding:0.7rem 0.8rem;font-weight:600;color:var(--white);white-space:nowrap;">Jorge Royo</td>
+              <td style="padding:0.7rem 0.8rem;color:rgba(253,250,245,0.7);white-space:nowrap;">14 Nov 1992</td>
+              <td style="padding:0.7rem 0.8rem;font-family:monospace;color:var(--turquoise);letter-spacing:0.04em;">77134459A</td>
+              <td style="padding:0.4rem 0.6rem;"><input class="passport-input" id="pass-jorge" placeholder="Nº pasaporte" onchange="savePassports()"></td>
+            </tr>
+            <tr style="border-top:1px solid rgba(255,255,255,0.06);">
+              <td style="padding:0.7rem 0.8rem;font-weight:600;color:var(--white);white-space:nowrap;">David Pardos</td>
+              <td style="padding:0.7rem 0.8rem;color:rgba(253,250,245,0.7);white-space:nowrap;">10 May 1988</td>
+              <td style="padding:0.7rem 0.8rem;font-family:monospace;color:var(--turquoise);letter-spacing:0.04em;">76972136Z</td>
+              <td style="padding:0.4rem 0.6rem;"><input class="passport-input" id="pass-david" placeholder="Nº pasaporte" onchange="savePassports()"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <!-- Use <object> which embeds PDFs without CORS restrictions -->
-      <object id="pdf-viewer-object" type="application/pdf" style="width:100%;height:700px;border-radius:12px;background:#fff;border:1px solid rgba(255,255,255,0.1);" data="">
-        <div style="padding:2rem;text-align:center;color:var(--muted);">
-          <div style="margin-bottom:1rem;">📄 PDF no se puede abrir en este navegador</div>
-          <a id="pdf-fallback-link" href="#" target="_blank" style="background:var(--turquoise);color:var(--deep);border-radius:8px;padding:0.5rem 1.2rem;font-size:0.82rem;font-weight:600;text-decoration:none;">🔗 Abrir PDF en nueva pestaña</a>
-        </div>
-      </object>
     </div>
 
-    <!-- CONTACTOS -->
+        <!-- CONTACTOS -->
     <div>
       <div class="section-title" style="font-size:1.1rem">📞 Contactos de emergencia RD</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.8rem;">
@@ -2392,6 +2432,9 @@
     }
     renderChecklist();
 
+    // Passports
+    loadPassports(state.pasaportes);
+
     // PDFs: lightweight metadata from main state (url points to Cloudinary)
     pdfDocs = state.pdfs || [];
     renderPdfs();
@@ -2421,6 +2464,14 @@
 
     state.checklist = clCats; // new format: array of category objects
     state.pdfs = pdfDocs; // only lightweight metadata, no base64
+    // Passports
+    state.pasaportes = {
+      luis:    document.getElementById('pass-luis')?.value    || '',
+      antonio: document.getElementById('pass-antonio')?.value || '',
+      jana:    document.getElementById('pass-jana')?.value    || '',
+      jorge:   document.getElementById('pass-jorge')?.value   || '',
+      david:   document.getElementById('pass-david')?.value   || '',
+    };
   }
 
   function saveAll() { collectState(); scheduleSave(); }
@@ -2492,66 +2543,6 @@
     del.onclick = () => { span.remove(); saveAll(); };
     span.appendChild(del);
     container.appendChild(span);
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  //  EXPENSES
-  // ═══════════════════════════════════════════════════════════
-  let expenses  = [];
-  let nextExpId = 7;
-
-  function renderExpenses() {
-    const tbody = document.getElementById('expense-tbody');
-    if (!tbody) return;
-    tbody.innerHTML = '';
-    let total = 0, paid = 0;
-    expenses.forEach(exp => {
-      total += exp.importe;
-      if (exp.paid) paid += exp.importe;
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td><div class="place-name">${exp.concepto}</div></td>
-        <td class="price">${fmt(exp.importe)}</td>
-        <td class="who">${exp.resp}</td>
-        <td><span class="pill ${exp.paid?'pill-paid':'pill-unpaid'} pill-clickable"
-              onclick="toggleExpPay(${exp.id})">${exp.paid?'Pagado':'Pendiente'}</span></td>
-        <td><button class="exp-del-btn" onclick="deleteExpense(${exp.id})">×</button></td>`;
-      tbody.appendChild(tr);
-    });
-    document.getElementById('g-total').textContent  = fmt(total);
-    document.getElementById('g-paid').textContent   = fmt(paid);
-    document.getElementById('g-unpaid').textContent = fmt(total - paid);
-    document.getElementById('g-pp').textContent     = fmt(total / 5);
-  }
-  function fmt(n) {
-    return n.toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:2}) + '€';
-  }
-  function toggleExpPay(id) {
-    const exp = expenses.find(e => e.id === id);
-    if (exp) { exp.paid = !exp.paid; renderExpenses(); saveAll(); }
-  }
-  function deleteExpense(id) {
-    expenses = expenses.filter(e => e.id !== id);
-    renderExpenses(); saveAll();
-  }
-  function showAddExpense() {
-    document.getElementById('add-expense-form').style.display = 'block';
-    document.getElementById('add-expense-btn').style.display  = 'none';
-    document.getElementById('exp-concepto').focus();
-  }
-  function cancelAddExpense() {
-    document.getElementById('add-expense-form').style.display = 'none';
-    document.getElementById('add-expense-btn').style.display  = 'inline-flex';
-    ['exp-concepto','exp-importe','exp-resp'].forEach(id => document.getElementById(id).value = '');
-  }
-  function confirmAddExpense() {
-    const concepto = document.getElementById('exp-concepto').value.trim();
-    const importe  = parseFloat(document.getElementById('exp-importe').value) || 0;
-    const resp     = document.getElementById('exp-resp').value.trim() || '—';
-    const paid     = document.getElementById('exp-estado').value === 'paid';
-    if (!concepto) { document.getElementById('exp-concepto').focus(); return; }
-    expenses.push({ id: nextExpId++, concepto, importe, resp, paid });
-    renderExpenses(); saveAll(); cancelAddExpense();
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -2768,97 +2759,7 @@
   function addCheckBtn(id) { /* replaced by addCheckBtnV2 */ }
 
   // ═══════════════════════════════════════════════════════════
-  //  PDF — CLOUDINARY (upload only; viewer uses <object> tag)
-  // ═══════════════════════════════════════════════════════════
-  let pdfDocs = [];
 
-  async function handlePdfUpload(event) {
-    const files = Array.from(event.target.files);
-    event.target.value = '';
-    for (const file of files) {
-      if (file.type !== 'application/pdf') continue;
-      setSyncUI('syncing', `Subiendo ${file.name}…`);
-      try {
-        const fd = new FormData();
-        fd.append('file', file);
-        fd.append('upload_preset', CLOUDINARY.preset);
-        fd.append('resource_type', 'raw');
-        const res  = await fetch(CLOUDINARY.uploadUrl, {method:'POST', body:fd});
-        const data = await res.json();
-        if (data.error) throw new Error(data.error.message);
-        if (!res.ok)    throw new Error('HTTP ' + res.status);
-        const rawUrl = data.secure_url
-          .replace('/image/upload/', '/raw/upload/')
-          .replace('/auto/upload/',  '/raw/upload/');
-        pdfDocs.push({ id: data.public_id, name: file.name, size: file.size, url: rawUrl, public_id: data.public_id });
-        renderPdfs();
-        saveAll();
-        setSyncUI('ok', `${file.name} subido`);
-      } catch(e) {
-        console.error('upload error', e);
-        setSyncUI('error', `Error: ${e.message}`);
-        alert('Error al subir: ' + e.message);
-      }
-    }
-  }
-
-  function renderPdfs() {
-    const list = document.getElementById('pdf-list');
-    if (!list) return;
-    if (!pdfDocs.length) {
-      list.innerHTML = '<div style="font-size:0.8rem;color:var(--muted);padding:0.5rem 0;">No hay documentos adjuntos todavía.</div>';
-      return;
-    }
-    list.innerHTML = '';
-    pdfDocs.forEach(doc => {
-      const sz     = doc.size > 1048576 ? (doc.size/1048576).toFixed(1)+' MB' : Math.round(doc.size/1024)+' KB';
-      const safeId = String(doc.id).replace(/['"\\]/g, '');
-      const item   = document.createElement('div');
-      item.className = 'pdf-item';
-      const btn1 = document.createElement('button');
-      btn1.className = 'pdf-btn';
-      btn1.textContent = '👁 Ver';
-      btn1.onclick = () => viewPdf(safeId);
-      const btn2 = document.createElement('button');
-      btn2.className = 'pdf-btn del';
-      btn2.textContent = '🗑';
-      btn2.onclick = () => deletePdf(safeId);
-      const actions = document.createElement('div');
-      actions.className = 'pdf-actions';
-      actions.appendChild(btn1);
-      actions.appendChild(btn2);
-      item.innerHTML = '<div class="pdf-icon">📄</div>' +
-        '<div class="pdf-name" title="' + doc.name + '">' + doc.name + '</div>' +
-        '<div class="pdf-size">' + sz + '</div>';
-      item.appendChild(actions);
-      list.appendChild(item);
-    });
-  }
-
-  function viewPdf(id) {
-    const doc = pdfDocs.find(d => String(d.id) === id);
-    if (!doc) return;
-    document.getElementById('pdf-viewer-name').textContent = '📄 ' + doc.name;
-    document.getElementById('pdf-download-link').href      = doc.url;
-    document.getElementById('pdf-fallback-link').href      = doc.url;
-    const obj = document.getElementById('pdf-viewer-object');
-    obj.data  = doc.url;
-    const wrap = document.getElementById('pdf-viewer-wrap');
-    wrap.style.display = 'block';
-    wrap.scrollIntoView({behavior:'smooth', block:'start'});
-  }
-
-  function closePdfViewer() {
-    const wrap = document.getElementById('pdf-viewer-wrap');
-    if (wrap) wrap.style.display = 'none';
-    const obj = document.getElementById('pdf-viewer-object');
-    if (obj)  obj.data = '';
-  }
-
-  function deletePdf(id) {
-    pdfDocs = pdfDocs.filter(d => String(d.id) !== id);
-    renderPdfs(); closePdfViewer(); saveAll();
-  }
 
   // ═══════════════════════════════════════════════════════════
   //  TRIP PROGRESS BAR
@@ -2888,6 +2789,27 @@
     }
   }
 
+  function savePassports() {
+    if (!state) return;
+    state.pasaportes = {
+      luis:    document.getElementById('pass-luis')?.value    || '',
+      antonio: document.getElementById('pass-antonio')?.value || '',
+      jana:    document.getElementById('pass-jana')?.value    || '',
+      jorge:   document.getElementById('pass-jorge')?.value   || '',
+      david:   document.getElementById('pass-david')?.value   || '',
+    };
+    scheduleSave();
+  }
+
+  function loadPassports(data) {
+    if (!data) return;
+    const fields = ['luis','antonio','jana','jorge','david'];
+    fields.forEach(k => {
+      const el = document.getElementById('pass-' + k);
+      if (el && data[k]) el.value = data[k];
+    });
+  }
+
   // ═══════════════════════════════════════════════════════════
   //  UTILS — CURRENCY CONVERTER
   // ═══════════════════════════════════════════════════════════
@@ -2906,8 +2828,7 @@
       document.getElementById('conv-rate').value = eurDopRate.toFixed(2);
       status.textContent = `✓ Actualizado: 1€ = ${eurDopRate.toFixed(0)} DOP / ${eurUsdRate.toFixed(2)} USD`;
       convertCurrency('eur');
-      const rateEl = document.getElementById('info-rate-txt');
-      if (rateEl) rateEl.textContent = `~${eurDopRate.toFixed(0)} DOP/€`;
+
     } catch(e) {
       status.textContent = `Usando tasa manual (${eurDopRate} DOP/€)`;
     }
@@ -2988,9 +2909,7 @@
     setEl('time-es', esTime); setEl('date-es', esDate);
     setEl('time-rd', rdTime); setEl('date-rd', rdDate);
 
-    // Info tab clocks
-    setEl('info-time-es', esTime); setEl('info-time-rd', rdTime);
-    setEl('info-date-rd', rdDate);
+
 
     const esMid = new Date(now.toLocaleString('en-US', {timeZone:'Europe/Madrid'}));
     const rdMid = new Date(now.toLocaleString('en-US', {timeZone:'America/Santo_Domingo'}));
@@ -2998,30 +2917,12 @@
     const sign  = diffH > 0 ? '+' : '';
     const diffTxt = `España va ${sign}${diffH}h respecto a RD`;
     setEl('time-diff', diffTxt);
-    setEl('info-time-diff', diffTxt);
+
   }
   setInterval(updateClocks, 1000);
   updateClocks();
 
-  // Info-tab converter (mirrors utils converter but independent inputs)
-  function infoConvert(from) {
-    const rate = eurDopRate || 64;
-    let eur = parseFloat(document.getElementById('info-conv-eur').value) || 0;
-    let dop = parseFloat(document.getElementById('info-conv-dop').value) || 0;
-    if (from === 'eur') {
-      dop = eur * rate;
-      document.getElementById('info-conv-dop').value = dop ? dop.toFixed(0) : '';
-    } else {
-      eur = dop / rate;
-      document.getElementById('info-conv-eur').value = eur ? eur.toFixed(2) : '';
-    }
-    const rateEl = document.getElementById('info-rate-txt');
-    if (rateEl) rateEl.textContent = `~${rate.toFixed(0)} DOP/€`;
-  }
-  function infoQuick(eur) {
-    document.getElementById('info-conv-eur').value = eur;
-    infoConvert('eur');
-  }
+
 
   // ── TIP CALCULATOR ────────────────────────────────────────
   function calcTip() {
