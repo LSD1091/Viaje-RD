@@ -2815,14 +2815,22 @@
       const safeId = String(doc.id).replace(/['"\\]/g, '');
       const item   = document.createElement('div');
       item.className = 'pdf-item';
-      item.innerHTML = \`
-        <div class="pdf-icon">📄</div>
-        <div class="pdf-name" title="\${doc.name}">\${doc.name}</div>
-        <div class="pdf-size">\${sz}</div>
-        <div class="pdf-actions">
-          <button class="pdf-btn" onclick="viewPdf('\${safeId}')">👁 Ver</button>
-          <button class="pdf-btn del" onclick="deletePdf('\${safeId}')">🗑</button>
-        </div>\`;
+      const btn1 = document.createElement('button');
+      btn1.className = 'pdf-btn';
+      btn1.textContent = '👁 Ver';
+      btn1.onclick = () => viewPdf(safeId);
+      const btn2 = document.createElement('button');
+      btn2.className = 'pdf-btn del';
+      btn2.textContent = '🗑';
+      btn2.onclick = () => deletePdf(safeId);
+      const actions = document.createElement('div');
+      actions.className = 'pdf-actions';
+      actions.appendChild(btn1);
+      actions.appendChild(btn2);
+      item.innerHTML = '<div class="pdf-icon">📄</div>' +
+        '<div class="pdf-name" title="' + doc.name + '">' + doc.name + '</div>' +
+        '<div class="pdf-size">' + sz + '</div>';
+      item.appendChild(actions);
       list.appendChild(item);
     });
   }
