@@ -2401,11 +2401,6 @@
   function applyStateToUI() {
     if (!state) return;
 
-    // Expenses
-    expenses  = state.gastos    || [];
-    nextExpId = state.nextExpId || 7;
-    renderExpenses();
-
     // Itinerary pay toggles
     const pays = state.pagos_itinerario || {};
     document.querySelectorAll('.toggle-pay').forEach(el => {
@@ -2435,9 +2430,7 @@
     // Passports
     loadPassports(state.pasaportes);
 
-    // PDFs: lightweight metadata from main state (url points to Cloudinary)
-    pdfDocs = state.pdfs || [];
-    renderPdfs();
+
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -2818,20 +2811,28 @@
 
   async function fetchExchangeRate() {
     const status = document.getElementById('rate-status');
-    status.textContent = 'Actualizando…';
-    try {
-      const res = await fetch('https://api.frankfurter.app/latest?from=EUR&to=USD,DOP');
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-      eurUsdRate = data.rates.USD;
-      eurDopRate = data.rates.DOP;
-      document.getElementById('conv-rate').value = eurDopRate.toFixed(2);
-      status.textContent = `✓ Actualizado: 1€ = ${eurDopRate.toFixed(0)} DOP / ${eurUsdRate.toFixed(2)} USD`;
-      convertCurrency('eur');
-
-    } catch(e) {
-      status.textContent = `Usando tasa manual (${eurDopRate} DOP/€)`;
+    if (status) status.textContent = 'Actualizando…';
+    const apis = [
+      'https://open.er-api.com/v6/latest/EUR',
+      'https://api.exchangerate-api.com/v4/latest/EUR',
+    ];
+    for (const url of apis) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) continue;
+        const data = await res.json();
+        const rates = data.rates || data.conversion_rates;
+        if (!rates) continue;
+        eurUsdRate = rates.USD || eurUsdRate;
+        eurDopRate = rates.DOP || eurDopRate;
+        const rateInput = document.getElementById('conv-rate');
+        if (rateInput) rateInput.value = eurDopRate.toFixed(2);
+        if (status) status.textContent = '✓ 1€ = ' + eurDopRate.toFixed(0) + ' DOP / ' + eurUsdRate.toFixed(2) + ' USD';
+        convertCurrency('eur');
+        return;
+      } catch(e) { /* try next */ }
     }
+    if (status) status.textContent = 'Usando tasa manual (' + eurDopRate + ' DOP/€)';
   }
 
   function convertCurrency(from) {
