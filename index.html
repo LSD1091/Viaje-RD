@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌴 República Dominicana 2026 · v3</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>🌴 República Dominicana 2026 · v5</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -2343,8 +2346,6 @@
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const json = await res.json();
       state = json.record;
-      // PDFs metadata (url, name, size) lives in main state — no base64, just references
-      pdfDocs = state.pdfs || [];
       applyStateToUI();
       setSyncUI('ok', 'Sincronizado · ' + fmtTime(state.lastUpdated));
     } catch(e) {
@@ -2367,7 +2368,6 @@
   async function pushRemote() {
     if (!state) return;
     state.lastUpdated = new Date().toISOString();
-    state.pdfs = pdfDocs; // only metadata: {id, name, size, url} — no base64
     setSyncUI('syncing', 'Guardando cambios…');
     try {
       const res = await fetch(JSONBIN.url, {
@@ -2438,9 +2438,6 @@
   // ═══════════════════════════════════════════════════════════
   function collectState() {
     if (!state) return;
-    state.gastos    = expenses;
-    state.nextExpId = nextExpId;
-
     state.pagos_itinerario = {};
     document.querySelectorAll('.toggle-pay').forEach(el => {
       state.pagos_itinerario[el.dataset.id] = el.classList.contains('status-paid');
@@ -2455,8 +2452,7 @@
       });
     }
 
-    state.checklist = clCats; // new format: array of category objects
-    state.pdfs = pdfDocs; // only lightweight metadata, no base64
+    state.checklist = clCats;
     // Passports
     state.pasaportes = {
       luis:    document.getElementById('pass-luis')?.value    || '',
@@ -2543,6 +2539,7 @@
   // ═══════════════════════════════════════════════════════════
 
   // checklist state: array of {id, name, emoji, collapsed, items:[{id,text,done}]}
+  let pdfDocs = [];
   let clCats = [];
   let movingItem = null; // {catId, itemId}
 
