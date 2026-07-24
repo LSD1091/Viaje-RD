@@ -976,6 +976,133 @@
   .pill-clickable { cursor: pointer; user-select: none; }
   .pill-clickable:hover { opacity: 0.8; }
 
+  /* ── EDITABLE FIELDS ──────────────────────────────────── */
+  .editable-field {
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed rgba(255,255,255,0.2);
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    outline: none;
+    width: 100%;
+    padding: 0.1rem 0;
+    transition: border-color 0.2s, background 0.15s;
+    cursor: text;
+  }
+  .editable-field:hover  { border-bottom-color: rgba(44,196,196,0.5); }
+  .editable-field:focus  { border-bottom-color: var(--turquoise); background: rgba(44,196,196,0.05); border-radius: 4px 4px 0 0; }
+  .editable-field.stop-name     { font-size: 1.05rem; font-weight: 700; color: var(--white); }
+  .editable-field.stop-location { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+  .editable-field.price-amt     { font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+
+  .note-tag.warning { background: rgba(232,97,77,0.15); border-color: rgba(232,97,77,0.4); color: #F0906E; }
+
+  /* ── CACAS ─────────────────────────────────────────────── */
+  .caca-form {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  .caca-users {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .caca-user-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    border: 2px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .caca-user-btn:hover   { border-color: var(--turquoise); color: var(--turquoise); }
+  .caca-user-btn.selected { border-color: var(--turquoise); background: rgba(44,196,196,0.15); color: var(--white); font-weight: 700; }
+  .caca-stars {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+  .caca-star { opacity: 0.3; transition: opacity 0.1s, transform 0.1s; }
+  .caca-star.lit { opacity: 1; }
+  .caca-star:hover { transform: scale(1.2); }
+
+  .caca-log {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .caca-entry {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 0.65rem 0.9rem;
+    transition: border-color 0.15s;
+  }
+  .caca-entry:hover { border-color: rgba(255,255,255,0.14); }
+  .caca-entry-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+    color: var(--deep);
+  }
+  .caca-entry-info { flex: 1; }
+  .caca-entry-name { font-size: 0.85rem; font-weight: 600; color: var(--white); }
+  .caca-entry-meta { font-size: 0.7rem; color: var(--muted); margin-top: 0.1rem; }
+  .caca-entry-score { font-size: 1.1rem; flex-shrink: 0; }
+  .caca-entry-del {
+    background: none; border: none; color: rgba(232,97,77,0.35);
+    cursor: pointer; font-size: 0.9rem; padding: 0.2rem 0.3rem;
+    transition: color 0.15s; flex-shrink: 0;
+  }
+  .caca-entry-del:hover { color: var(--coral); }
+
+  .caca-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .caca-stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 0.9rem;
+    text-align: center;
+  }
+  .caca-stat-card.gold   { border-color: rgba(212,168,67,0.4);  background: rgba(212,168,67,0.06); }
+  .caca-stat-card.silver { border-color: rgba(180,180,200,0.4); background: rgba(180,180,200,0.05); }
+  .caca-stat-card.bronze { border-color: rgba(180,100,50,0.4);  background: rgba(180,100,50,0.05); }
+  .caca-stat-val { font-size: 1.6rem; font-weight: 700; color: var(--white); }
+  .caca-stat-lbl { font-size: 0.68rem; color: var(--muted); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .caca-stat-name { font-size: 0.82rem; font-weight: 600; color: var(--white); margin-top: 0.3rem; }
+
+  .caca-ranking { display: flex; flex-direction: column; gap: 0.4rem; }
+  .caca-rank-row {
+    display: flex; align-items: center; gap: 0.7rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px; padding: 0.6rem 0.9rem;
+  }
+  .caca-rank-pos { font-size: 1rem; width: 1.5rem; text-align: center; flex-shrink: 0; }
+  .caca-rank-bar-wrap { flex: 1; background: rgba(255,255,255,0.07); border-radius: 99px; height: 6px; overflow: hidden; }
+  .caca-rank-bar { height: 100%; border-radius: 99px; transition: width 0.5s; }
+
   /* ── CHECKLIST V2 ─────────────────────────────────────── */
   .cl-category {
     background: rgba(255,255,255,0.03);
@@ -1421,6 +1548,7 @@
   <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">ℹ️</span><span class="tab-label">Info</span></button>
   <button class="tab-btn" onclick="showTab('info',this)"><span class="tab-icon">🌴</span><span class="tab-label">Info RD</span></button>
   <button class="tab-btn" onclick="showTab('utils',this)"><span class="tab-icon">🛠</span><span class="tab-label">Utils</span></button>
+  <button class="tab-btn" onclick="showTab('cacas',this)"><span class="tab-icon">💩</span><span class="tab-label">Cacas</span></button>
 </div>
 
 <div class="content">
@@ -1646,11 +1774,11 @@
           <div class="stop-header">
             <div>
               <div class="stop-num">Parada 1 · 1 noche</div>
-              <div class="stop-name">El Toucan</div>
-              <div class="stop-location">📍 Bayahibe</div>
+              <input class="editable-field stop-name" data-key="stop1-name" value="El Toucan" onchange="saveEditableField(this)">
+              <input class="editable-field stop-location" data-key="stop1-loc" value="📍 Bayahibe" onchange="saveEditableField(this)">
             </div>
             <div class="price-badge">
-              <div class="price-amt">100€</div>
+              <input class="editable-field price-amt" data-key="stop1-price" value="100€" onchange="saveEditableField(this)" style="width:70px;text-align:right;">
               <div class="price-status status-unpaid toggle-pay" data-id="pay-1" onclick="togglePay(this)">Sin pagar</div>
             </div>
           </div>
@@ -1679,7 +1807,7 @@
               <div class="stop-location">📍 Isla Saona</div>
             </div>
             <div class="price-badge">
-              <div class="price-amt">~258€</div>
+              <input class="editable-field price-amt" data-key="stop2-price" value="~258€" onchange="saveEditableField(this)" style="width:70px;text-align:right;">
               <div class="price-status status-unpaid toggle-pay" data-id="pay-2" onclick="togglePay(this)">Sin pagar</div>
             </div>
           </div>
@@ -1708,7 +1836,7 @@
               <div class="stop-location">📍 C/ María Trinidad Sánchez, Santo Domingo</div>
             </div>
             <div class="price-badge">
-              <div class="price-amt">198€</div>
+              <input class="editable-field price-amt" data-key="stop3-price" value="198€" onchange="saveEditableField(this)" style="width:70px;text-align:right;">
               <div class="price-status status-paid toggle-pay" data-id="pay-3" onclick="togglePay(this)">Pagado</div>
             </div>
           </div>
@@ -1733,20 +1861,20 @@
           <div class="stop-header">
             <div>
               <div class="stop-num">Parada 4 · 3 noches</div>
-              <div class="stop-name">Villa Lugo Lahoz</div>
-              <div class="stop-location">📍 Puerto Plata</div>
+              <input class="editable-field stop-name" data-key="stop4-name" value="Alojamiento Puerto Plata" onchange="saveEditableField(this)">
+              <input class="editable-field stop-location" data-key="stop4-loc" value="📍 Puerto Plata (dirección pendiente)" onchange="saveEditableField(this)">
             </div>
             <div class="price-badge">
-              <div class="price-amt">732€</div>
+              <input class="editable-field price-amt" data-key="stop4-price" value="452,68€" onchange="saveEditableField(this)" style="width:80px;text-align:right;">
               <div class="price-status status-unpaid toggle-pay" data-id="pay-4" onclick="togglePay(this)">Sin pagar</div>
             </div>
           </div>
           <div class="stop-dates">
-            <div class="date-item"><div class="date-label">Entrada</div><div>Mié 29 Jul</div></div>
-            <div class="date-item"><div class="date-label">Salida</div><div>Sáb 1 Ago</div></div>
+            <div class="date-item"><div class="date-label">Entrada</div><input class="editable-field" data-key="stop4-in" value="Mié 29 Jul · 16:00h" onchange="saveEditableField(this)" style="font-size:0.85rem;"></div>
+            <div class="date-item"><div class="date-label">Salida</div><input class="editable-field" data-key="stop4-out" value="Sáb 1 Ago · 11:00h" onchange="saveEditableField(this)" style="font-size:0.85rem;"></div>
           </div>
           <div class="stop-notes" id="tags-4">
-            <span class="note-tag">Villa privada</span>
+            <span class="note-tag warning">⚠ Dirección pendiente de confirmar</span>
             <span class="note-tag info">Reserva: Booking de Jana</span>
           </div>
           <div class="tag-input-row">
@@ -1762,20 +1890,20 @@
           <div class="stop-header">
             <div>
               <div class="stop-num">Parada 5 · 4 noches</div>
-              <div class="stop-name">La Dolce Vita 12 Beachfront</div>
-              <div class="stop-location">📍 Las Terrenas, Samaná</div>
+              <input class="editable-field stop-name" data-key="stop5-name" value="La Dolce Vita 12 Beachfront" onchange="saveEditableField(this)">
+              <input class="editable-field stop-location" data-key="stop5-loc" value="📍 Emilio Prudhomme #2, Las Terrenas, Samaná 32000" onchange="saveEditableField(this)">
             </div>
             <div class="price-badge">
-              <div class="price-amt">651€</div>
+              <input class="editable-field price-amt" data-key="stop5-price" value="665,36€" onchange="saveEditableField(this)" style="width:80px;text-align:right;">
               <div class="price-status status-unpaid toggle-pay" data-id="pay-5" onclick="togglePay(this)">Sin pagar</div>
             </div>
           </div>
           <div class="stop-dates">
-            <div class="date-item"><div class="date-label">Entrada</div><div>Sáb 1 Ago</div></div>
-            <div class="date-item"><div class="date-label">Salida</div><div>Mié 5 Ago</div></div>
+            <div class="date-item"><div class="date-label">Entrada</div><input class="editable-field" data-key="stop5-in" value="Sáb 1 Ago · 15:00h" onchange="saveEditableField(this)" style="font-size:0.85rem;"></div>
+            <div class="date-item"><div class="date-label">Salida</div><input class="editable-field" data-key="stop5-out" value="Mié 5 Ago · 11:00h" onchange="saveEditableField(this)" style="font-size:0.85rem;"></div>
           </div>
           <div class="stop-notes" id="tags-5">
-            <span class="note-tag">Beachfront</span>
+            <span class="note-tag">Beachfront · ✅ Confirmada</span>
             <span class="note-tag info">Reserva: Booking de Jana</span>
           </div>
           <div class="tag-input-row">
@@ -1791,11 +1919,11 @@
           <div class="stop-header">
             <div>
               <div class="stop-num">Parada 6 · 3 noches</div>
-              <div class="stop-name">Caribbean Deluxe Princess</div>
-              <div class="stop-location">📍 Punta Cana</div>
+              <input class="editable-field stop-name" data-key="stop6-name" value="Caribbean Deluxe Princess" onchange="saveEditableField(this)">
+              <input class="editable-field stop-location" data-key="stop6-loc" value="📍 Punta Cana" onchange="saveEditableField(this)">
             </div>
             <div class="price-badge">
-              <div class="price-amt">1.389€</div>
+              <input class="editable-field price-amt" data-key="stop6-price" value="1.389€" onchange="saveEditableField(this)" style="width:80px;text-align:right;">
               <div class="price-status status-unpaid toggle-pay" data-id="pay-6" onclick="togglePay(this)">Sin pagar</div>
             </div>
           </div>
@@ -1862,16 +1990,16 @@
         <div class="map-stop-row">
           <div class="map-stop-num">4</div>
           <div class="map-stop-info">
-            <div class="map-stop-place">Villa Lugo Lahoz · Puerto Plata</div>
-            <div class="map-stop-loc">29 Jul – 1 Ago · 3 noches</div>
+            <div class="map-stop-place">Aloj. Puerto Plata (por confirmar)</div>
+            <div class="map-stop-loc">29 Jul – 1 Ago · 3 noches · Entrada 16:00 · Salida 11:00</div>
           </div>
         </div>
         <div class="route-leg">🚗 ~2h 15min · ~110 km hacia Las Terrenas</div>
         <div class="map-stop-row">
           <div class="map-stop-num">5</div>
           <div class="map-stop-info">
-            <div class="map-stop-place">La Dolce Vita 12 Beachfront · Las Terrenas</div>
-            <div class="map-stop-loc">1–5 Ago · 4 noches</div>
+            <div class="map-stop-place">La Dolce Vita 12 Beachfront · Las Terrenas, Samaná</div>
+            <div class="map-stop-loc">1–5 Ago · 4 noches · Entrada 15:00 · Salida 11:00</div>
           </div>
         </div>
         <div class="route-leg">🚗 ~3h 30min · ~230 km hacia Punta Cana</div>
@@ -2257,6 +2385,50 @@
 
   </div>
 
+  <!-- CACAS -->
+  <div id="panel-cacas" class="panel">
+    <div class="section-title">💩 Registro de Cacas</div>
+    <div style="font-size:0.78rem;color:var(--muted);margin-bottom:1.2rem;">El campeonato más importante del viaje. ¡Que gane el mejor intestino!</div>
+
+    <!-- FORM -->
+    <div class="caca-form">
+      <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:0.7rem;">Registrar una caca</div>
+      <div class="caca-users" id="caca-user-btns">
+        <button class="caca-user-btn" onclick="selectCacaUser('Lalu',this)">💪 Lalu</button>
+        <button class="caca-user-btn" onclick="selectCacaUser('Jana',this)">🌸 Jana</button>
+        <button class="caca-user-btn" onclick="selectCacaUser('Royo',this)">🎸 Royo</button>
+        <button class="caca-user-btn" onclick="selectCacaUser('Davidín',this)">🎯 Davidín</button>
+        <button class="caca-user-btn" onclick="selectCacaUser('Antuan',this)">⚡ Antuan</button>
+      </div>
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.4rem;">Puntuación (1–5 💩)</div>
+      <div class="caca-stars" id="caca-stars">
+        <span class="caca-star" onclick="setCacaScore(1)">💩</span>
+        <span class="caca-star" onclick="setCacaScore(2)">💩</span>
+        <span class="caca-star" onclick="setCacaScore(3)">💩</span>
+        <span class="caca-star" onclick="setCacaScore(4)">💩</span>
+        <span class="caca-star" onclick="setCacaScore(5)">💩</span>
+      </div>
+      <div style="margin-bottom:0.8rem;">
+        <input class="util-input" id="caca-nota" placeholder="Nota o comentario (opcional)…" style="font-size:0.82rem;">
+      </div>
+      <button class="save-btn" onclick="addCaca()" style="width:100%;">💩 Registrar caca</button>
+      <div id="caca-msg" style="font-size:0.75rem;color:var(--turquoise);margin-top:0.5rem;min-height:1rem;"></div>
+    </div>
+
+    <!-- STATS -->
+    <div style="font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:0.8rem;">📊 Estadísticas del campeonato</div>
+    <div class="caca-stats-grid" id="caca-podium"></div>
+    <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:0.6rem;margin-top:0.5rem;">🏆 Ranking general</div>
+    <div class="caca-ranking" id="caca-ranking"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:1rem;" id="caca-extra-stats"></div>
+
+    <!-- LOG -->
+    <div style="font-size:0.9rem;font-weight:700;color:var(--white);margin:1.2rem 0 0.7rem;">📋 Registro completo</div>
+    <div class="caca-log" id="caca-log"></div>
+    <div id="caca-empty" style="font-size:0.82rem;color:var(--muted);text-align:center;padding:1rem 0;">Aún no hay cacas registradas. ¡Ánimo!</div>
+  </div>
+
+
 </div>
 
 <div class="footer">
@@ -2295,8 +2467,8 @@
       {id:1,concepto:'El Toucan · Bayahibe',                   importe:100,    resp:'Jana (Booking)',paid:false},
       {id:2,concepto:'El Paraíso de Saona · Isla Saona',       importe:258,    resp:'Jana (Booking)',paid:false},
       {id:3,concepto:'Aloj. Santo Domingo Este',               importe:198.04, resp:'Royo (Airbnb)', paid:true },
-      {id:4,concepto:'Villa Lugo Lahoz · Puerto Plata',        importe:732.52, resp:'Jana (Booking)',paid:false},
-      {id:5,concepto:'La Dolce Vita 12 · Las Terrenas',        importe:651.72, resp:'Jana (Booking)',paid:false},
+      {id:4,concepto:'Aloj. Puerto Plata (por confirmar)',     importe:452.68, resp:'Jana (Booking)',paid:false},
+      {id:5,concepto:'La Dolce Vita 12 · Las Terrenas',        importe:665.36, resp:'Jana (Booking)',paid:false},
       {id:6,concepto:'Caribbean Deluxe Princess · Punta Cana', importe:1389,   resp:'Jana (Booking)',paid:false},
     ],
     nextExpId: 7,
@@ -2429,6 +2601,11 @@
 
     // Passports
     loadPassports(state.pasaportes);
+    // Editable fields
+    loadEditableFields(state.editableFields);
+    // Cacas
+    cacaLog = state.cacaLog || [];
+    renderCacas();
 
 
   }
@@ -2453,6 +2630,9 @@
     }
 
     state.checklist = clCats;
+    state.cacaLog = cacaLog;
+    if (!state.editableFields) state.editableFields = {};
+    document.querySelectorAll("[data-key]").forEach(el => { state.editableFields[el.dataset.key] = el.value; });
     // Passports
     state.pasaportes = {
       luis:    document.getElementById('pass-luis')?.value    || '',
@@ -2549,8 +2729,8 @@
       {id:'i2',text:'Pagar El Paraíso de Saona (Jana) — ~258€',done:false},
       {id:'i3',text:'⚠ Comprar entradas barco + Isla Saona',done:false},
       {id:'i4',text:'Liquidar aloj. Santo Domingo (Royo pagó 198€)',done:false},
-      {id:'i5',text:'Pagar Villa Lugo Lahoz (Jana) — 732€',done:false},
-      {id:'i6',text:'Pagar La Dolce Vita 12 (Jana) — 651€',done:false},
+      {id:'i5',text:'Pagar Aloj. Puerto Plata (Jana) — 452,68€',done:false},
+      {id:'i6',text:'Pagar La Dolce Vita 12 · Samaná (Jana) — 665,36€',done:false},
       {id:'i7',text:'Pagar Caribbean Deluxe Princess (Jana) — 1.389€',done:false},
       {id:'i8',text:'Comprobar validez pasaporte (mín. 6 meses)',done:false},
       {id:'i9',text:'Contratar seguro de viaje',done:false},
@@ -2941,6 +3121,186 @@
   function setTipPct(pct) {
     document.getElementById('tip-pct').value = pct;
     calcTip();
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  //  EDITABLE FIELDS
+  // ═══════════════════════════════════════════════════════════
+  function saveEditableField(input) {
+    if (!state) return;
+    if (!state.editableFields) state.editableFields = {};
+    state.editableFields[input.dataset.key] = input.value;
+    scheduleSave();
+  }
+
+  function loadEditableFields(fields) {
+    if (!fields) return;
+    Object.entries(fields).forEach(([key, val]) => {
+      const el = document.querySelector('[data-key="' + key + '"]');
+      if (el) el.value = val;
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  //  CACAS
+  // ═══════════════════════════════════════════════════════════
+  const CACA_COLORS = {
+    'Lalu':    '#2CC4C4',
+    'Jana':    '#E8614D',
+    'Royo':    '#D4A843',
+    'Davidín': '#7B68EE',
+    'Antuan':  '#6EDDA0',
+  };
+
+  let cacaSelectedUser = null;
+  let cacaSelectedScore = 0;
+  let cacaLog = []; // [{id, user, score, nota, ts}]
+
+  function selectCacaUser(name, btn) {
+    cacaSelectedUser = name;
+    document.querySelectorAll('.caca-user-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  function setCacaScore(n) {
+    cacaSelectedScore = n;
+    document.querySelectorAll('.caca-star').forEach((s, i) => {
+      s.classList.toggle('lit', i < n);
+    });
+  }
+
+  function addCaca() {
+    const msg = document.getElementById('caca-msg');
+    if (!cacaSelectedUser) { msg.textContent = '⚠ Selecciona quién hace la caca'; return; }
+    if (!cacaSelectedScore) { msg.textContent = '⚠ Puntúa la caca (1–5 💩)'; return; }
+    const nota = document.getElementById('caca-nota').value.trim();
+    cacaLog.unshift({ id: Date.now(), user: cacaSelectedUser, score: cacaSelectedScore, nota, ts: new Date().toISOString() });
+    msg.textContent = '✓ ¡Caca registrada! 💩';
+    setTimeout(() => { msg.textContent = ''; }, 2000);
+    // Reset form
+    setCacaScore(0);
+    document.getElementById('caca-nota').value = '';
+    renderCacas();
+    saveCacas();
+  }
+
+  function deleteCaca(id) {
+    cacaLog = cacaLog.filter(e => e.id !== id);
+    renderCacas(); saveCacas();
+  }
+
+  function renderCacas() {
+    const log     = document.getElementById('caca-log');
+    const empty   = document.getElementById('caca-empty');
+    const podium  = document.getElementById('caca-podium');
+    const ranking = document.getElementById('caca-ranking');
+    const extra   = document.getElementById('caca-extra-stats');
+    if (!log) return;
+
+    // Log
+    if (cacaLog.length === 0) {
+      log.innerHTML = ''; empty.style.display = 'block'; 
+    } else {
+      empty.style.display = 'none';
+      log.innerHTML = '';
+      cacaLog.forEach(entry => {
+        const d = new Date(entry.ts);
+        const dateStr = d.toLocaleDateString('es-ES', {day:'numeric', month:'short'}) + ' · ' + d.toLocaleTimeString('es-ES', {hour:'2-digit', minute:'2-digit'});
+        const stars = '💩'.repeat(entry.score) + '　'.repeat(5 - entry.score);
+        const color = CACA_COLORS[entry.user] || '#fff';
+        const initials = entry.user.slice(0,2).toUpperCase();
+        const div = document.createElement('div');
+        div.className = 'caca-entry';
+        div.innerHTML =
+          '<div class="caca-entry-avatar" style="background:' + color + '">' + initials + '</div>' +
+          '<div class="caca-entry-info">' +
+            '<div class="caca-entry-name">' + entry.user + (entry.nota ? ' · <span style="font-weight:400;color:var(--muted)">' + entry.nota + '</span>' : '') + '</div>' +
+            '<div class="caca-entry-meta">' + dateStr + '</div>' +
+          '</div>' +
+          '<div class="caca-entry-score">' + stars + '</div>' +
+          '<button class="caca-entry-del" onclick="deleteCaca(' + entry.id + ')">×</button>';
+        log.appendChild(div);
+      });
+    }
+
+    // Stats
+    const users = ['Lalu','Jana','Royo','Davidín','Antuan'];
+    const stats = {};
+    users.forEach(u => { stats[u] = { count:0, total:0, max:0, min:6 }; });
+    cacaLog.forEach(e => {
+      if (!stats[e.user]) return;
+      stats[e.user].count++;
+      stats[e.user].total += e.score;
+      stats[e.user].max = Math.max(stats[e.user].max, e.score);
+      stats[e.user].min = Math.min(stats[e.user].min, e.score);
+    });
+
+    // Podium by avg score (min 1 caca)
+    const sorted = users
+      .filter(u => stats[u].count > 0)
+      .sort((a,b) => (stats[b].total/stats[b].count) - (stats[a].total/stats[a].count));
+
+    const medals = ['🥇','🥈','🥉'];
+    const cardClass = ['gold','silver','bronze'];
+    podium.innerHTML = '';
+    sorted.slice(0,3).forEach((u, i) => {
+      const avg = (stats[u].total / stats[u].count).toFixed(1);
+      const card = document.createElement('div');
+      card.className = 'caca-stat-card ' + (cardClass[i] || '');
+      card.innerHTML =
+        '<div style="font-size:1.5rem">' + medals[i] + '</div>' +
+        '<div class="caca-stat-val">' + '💩'.repeat(Math.round(avg)) + '</div>' +
+        '<div class="caca-stat-name">' + u + '</div>' +
+        '<div class="caca-stat-lbl">Media ' + avg + ' · ' + stats[u].count + ' caca' + (stats[u].count !== 1 ? 's' : '') + '</div>';
+      podium.appendChild(card);
+    });
+
+    // Ranking by count
+    const byCount = [...users].filter(u => stats[u].count > 0).sort((a,b) => stats[b].count - stats[a].count);
+    const maxCount = byCount[0] ? stats[byCount[0]].count : 1;
+    ranking.innerHTML = '';
+    const rankColors = ['#D4A843','#B0B0C0','#CD7F32','var(--turquoise)','var(--turquoise)'];
+    byCount.forEach((u, i) => {
+      const pct = Math.round(stats[u].count / maxCount * 100);
+      const color = CACA_COLORS[u];
+      const row = document.createElement('div');
+      row.className = 'caca-rank-row';
+      row.innerHTML =
+        '<div class="caca-rank-pos">' + (i === 0 ? '👑' : '#' + (i+1)) + '</div>' +
+        '<div class="caca-entry-avatar" style="background:' + color + ';width:28px;height:28px;font-size:0.68rem;flex-shrink:0">' + u.slice(0,2).toUpperCase() + '</div>' +
+        '<div style="flex:1;min-width:0">' +
+          '<div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:3px">' + u + ' · ' + stats[u].count + ' 💩</div>' +
+          '<div class="caca-rank-bar-wrap"><div class="caca-rank-bar" style="width:' + pct + '%;background:' + color + '"></div></div>' +
+        '</div>' +
+        '<div style="font-size:0.78rem;color:var(--gold);font-weight:600;flex-shrink:0">⌀' + (stats[u].total/stats[u].count).toFixed(1) + '</div>';
+      ranking.appendChild(row);
+    });
+
+    // Extra stats
+    extra.innerHTML = '';
+    if (cacaLog.length > 0) {
+      // Most prolific
+      const mvp = byCount[0];
+      // Highest single score
+      const best = cacaLog.reduce((a,b) => a.score >= b.score ? a : b);
+      [
+        { icon:'💩', val: cacaLog.length, lbl:'Total cacas del viaje' },
+        { icon:'⭐', val: (cacaLog.reduce((s,e)=>s+e.score,0)/cacaLog.length).toFixed(1), lbl:'Media global' },
+        { icon:'👑', val: mvp, lbl:'Campeón (más cacas)' },
+        { icon:'🏅', val: best.user + ' (' + '💩'.repeat(best.score) + ')', lbl:'Mejor caca individual' },
+      ].forEach(s => {
+        const div = document.createElement('div');
+        div.className = 'caca-stat-card';
+        div.innerHTML = '<div style="font-size:1.3rem">' + s.icon + '</div><div class="caca-stat-val" style="font-size:1.1rem">' + s.val + '</div><div class="caca-stat-lbl">' + s.lbl + '</div>';
+        extra.appendChild(div);
+      });
+    }
+  }
+
+  function saveCacas() {
+    if (!state) return;
+    state.cacaLog = cacaLog;
+    scheduleSave();
   }
 
   // ═══════════════════════════════════════════════════════════
